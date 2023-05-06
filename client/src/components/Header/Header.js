@@ -5,6 +5,7 @@ export const Header = ( ) => {
         <div className="header-nav">
             <div className='logo'>
                 Logo
+                <img src="" alt="" />
             </div>
             <ul className="header-elements">
                 <li>Home</li>

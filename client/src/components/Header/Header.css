@@ -1,6 +1,8 @@
 .header-nav {
     display: flex;
     justify-content: space-around;
+    border: 0px solid black;
+    box-shadow: 1px 4px 20px 0px;
 }
 
 .header-elements {
@@ -10,4 +12,10 @@
 
 .header-elements li, .logo {
     margin: 5px;
+    border: 1px solid #f83e3e;
+    border-radius: 25px;
+    padding: 11px;
+    box-shadow: 0px 3px 8px 1px #1f1f1e;
+    background: #c43e3e;
+    color: white;
 }

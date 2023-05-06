@@ -8,3 +8,5 @@ from PetCare_2023.pets.models import Pet
 class PetAdmin(admin.ModelAdmin):
     # list_display = ('type', 'quantity')
     pass
+
+
