@@ -1,0 +1,13 @@
+.header-nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-elements {
+    display: flex;
+    list-style-type: none;
+}
+
+.header-elements li, .logo {
+    margin: 5px;
+}
