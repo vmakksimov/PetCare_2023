@@ -14,6 +14,11 @@ class Pet(models.Model):
     OTHER = 'Other'
     TYPES = [(x, x) for x in (CAT, DOG, BUNNY, PARROT, FISH, OTHER)]
 
+    MALE = 'Male'
+    FEMALE = 'Female'
+
+    GENDER = [(x, x) for x in (MALE, FEMALE)]
+
     name = models.CharField(max_length=20)
     age = models.IntegerField(
         blank=True,
@@ -32,3 +37,12 @@ class Pet(models.Model):
         null=True,
         blank=True,
     )
+
+    gender = models.CharField(
+        max_length=max(len(x) for (x, _) in TYPES),
+        choices=GENDER,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.name
