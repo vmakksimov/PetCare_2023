@@ -8,9 +8,9 @@ export const Header = ( ) => {
                 <img src="" alt="" />
             </div>
             <ul className="header-elements">
-                <li>Home</li>
-                <li>Login</li>
-                <li>Register</li>
+                <li className='header-buttons'>Home</li>
+                <li className='header-buttons'>Login</li>
+                <li className='header-buttons'>Register</li>
             </ul>
             
         </div>

@@ -19,3 +19,8 @@
     background: #c43e3e;
     color: white;
 }
+
+.header-buttons:hover{
+    background-color: black;
+    cursor: pointer;
+}
