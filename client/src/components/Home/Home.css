@@ -1,11 +1,30 @@
 .home-content{
     background-color: blanchedalmond;
+    display: flex;
+    justify-content: space-around;
 }
 
 .image-content {
     width: 25%;
+    /* background-image: url('../../styles/images/animals.png'); */
 }
 
 .image-content img {
     width: 100%;
+}
+
+strong {
+    font-size: 50px;
+}
+
+.title-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.title-content img {
+    width: 40%;
+    height: 70%;
 }

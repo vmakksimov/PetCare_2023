@@ -58,9 +58,9 @@ ROOT_URLCONF = 'PetCare_2023.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_HEADERS = default_headers + ('cache-control',)
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000'
+# ]
 
 CORS_ALLOW_METHODS = [
     "DELETE",

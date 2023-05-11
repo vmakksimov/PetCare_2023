@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import './styles/css/styles.css'
+
 import { Header } from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import * as petsService from './services/petsService'
@@ -11,7 +13,9 @@ function App() {
 
 	useEffect(() => {
 		petsService.getPets()
+			// .then(res => setPet(Object.values(res)))
 			.then(res => setPet(Object.values(res)))
+		
 	}, [])
 
 	return (
