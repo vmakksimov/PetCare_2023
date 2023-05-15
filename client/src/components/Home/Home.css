@@ -48,6 +48,11 @@ strong {
     border: 0px;
 }
 
+.title-buttons button:hover{
+    cursor: pointer;
+    box-shadow: 0px 3px 13px 2px #8b6149;
+}
+
 .learn {
     background-color: black;
 
@@ -56,3 +61,36 @@ strong {
 .reservation {
     background-color: coral;
 }
+
+.daycare-content {
+    display: flex;
+}
+
+.box-service-1, 
+.box-service-2, 
+.box-service-3, 
+.box-service-4, 
+.box-service-5 {
+ 
+    padding: 45px 9px;
+}
+
+.box-service-1 {
+    background-color: #ffdcda7a;
+}
+
+.box-service-2 {
+    background-color: lightblue;
+}
+
+.box-service-3 {
+    background-color: lightpink;
+}
+
+.box-service-4 {
+    background-color: lightgoldenrodyellow;
+}
+.box-service-5 {
+    background-color: lightcyan;
+}
+

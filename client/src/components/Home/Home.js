@@ -9,22 +9,50 @@ export const Home = ({ pets }) => {
     console.log(pet)
 
     return (
-        <article className='daycare-content'>
-            <div className="home-content">
-                <section className='title-content'>
-                    <section className='title-buttons'>
-                        <h1>Day Care</h1>
-                        <h2>Your <strong>Pet</strong> is Part of Our Family</h2>
-                        <button className='learn'>Learn More</button>
-                        <button className='reservation'>Make a Reservation</button>
+        <>
+            <article className='daycare-header'>
+                <div className="home-content">
+                    <section className='title-content'>
+                        <section className='title-buttons'>
+                            <h1>Home Page</h1>
+                            <h2>Your <strong>Pet</strong> is Part of Our Family</h2>
+                            <button className='learn'>Learn More</button>
+                            <button className='reservation'>Make a Reservation</button>
+                        </section>
+                        <img src={paw} alt="" />
                     </section>
-                    <img src={paw} alt="" />
+                    <section className='image-content'>
+                        <img src={animals} alt="animals" />
+                    </section>
+                </div>
+            </article>
+            <article className='daycare-content'>
+                <section className='box-service-1'>
+                    <h1>Daycare</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>More Details</button>
                 </section>
-                <section className='image-content'>
-                    <img src={animals} alt="animals" />
+                <section className='box-service-2'>
+                    <h1>Grooming</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>More Details</button>
                 </section>
-            </div>
-
-        </article>
+                <section className='box-service-3'>
+                    <h1>Shop</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>More Details</button>
+                </section>
+                <section className='box-service-4'>
+                    <h1>Boarding</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>More Details</button>
+                </section>
+                <section className='box-service-5'>
+                    <h1>Veterinary</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <button>More Details</button>
+                </section>
+            </article>
+        </>
     )
 }
