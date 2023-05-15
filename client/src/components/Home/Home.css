@@ -6,6 +6,7 @@
 
 .image-content {
     width: 25%;
+    margin-top: 7%;
     /* background-image: url('../../styles/images/animals.png'); */
 }
 
@@ -36,10 +37,9 @@ strong {
 }
 
 .title-content img {
-    width: 40%;
-    height: 70%;
+    width: 29%;
+    height: 86%;
 }
-
 .title-buttons button {
     padding: 10px 35px;
     border-radius: 8px;

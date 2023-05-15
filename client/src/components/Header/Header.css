@@ -13,15 +13,16 @@
 
 .header-elements li, .logo {
     margin: 5px;
-    border: 1px solid #f83e3e;
-    border-radius: 25px;
+    border: 0px;
+    border-radius: 8px;
     padding: 11px;
     box-shadow: 0px 3px 8px 1px #1f1f1e;
-    background: #c43e3e;
+    background: #8b6149;
     color: white;
 }
 
 .header-buttons:hover{
-    background-color: black;
+   background-color: black;
     cursor: pointer;
+    box-shadow: 0px 3px 13px 2px white;
 }
