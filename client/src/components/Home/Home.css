@@ -1,4 +1,4 @@
-.home-content{
+.home-content {
     background-color: blanchedalmond;
     display: flex;
     justify-content: space-around;
@@ -14,6 +14,17 @@
 }
 
 strong {
+    color: coral;
+}
+
+.title-content h2 {
+    font-size: 50px;
+    margin: 0px;
+
+}
+
+.title-content h1 {
+    margin: 0px;
     font-size: 50px;
 }
 
@@ -27,4 +38,21 @@ strong {
 .title-content img {
     width: 40%;
     height: 70%;
+}
+
+.title-buttons button {
+    padding: 10px 35px;
+    border-radius: 8px;
+    margin-right: 5px;
+    color: white;
+    border: 0px;
+}
+
+.learn {
+    background-color: black;
+
+}
+
+.reservation {
+    background-color: coral;
 }
