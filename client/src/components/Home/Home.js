@@ -28,29 +28,39 @@ export const Home = ({ pets }) => {
             </article>
             <article className='daycare-content'>
                 <section className='box-service-1'>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                     <h1>Daycare</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                     <button>More Details</button>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                 </section>
                 <section className='box-service-2'>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                     <h1>Grooming</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                     <button>More Details</button>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                 </section>
                 <section className='box-service-3'>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                     <h1>Shop</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                     <button>More Details</button>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                 </section>
                 <section className='box-service-4'>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                     <h1>Boarding</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                     <button>More Details</button>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                 </section>
                 <section className='box-service-5'>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                     <h1>Veterinary</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                     <button>More Details</button>
+                    <i class="fa fa-paw" aria-hidden="true"></i>
                 </section>
             </article>
         </>
