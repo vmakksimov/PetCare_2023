@@ -73,6 +73,14 @@ strong {
 .box-service-5 {
  
     padding: 45px 9px;
+    
+}
+
+#paw-up {
+    transform: rotate(45deg);
+    position: relative;
+    left: 50%;
+    bottom: 25%;
 }
 
 .box-service-1 {
