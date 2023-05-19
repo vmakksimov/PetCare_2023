@@ -1,7 +1,7 @@
 import './Home.css'
 import animals from '../../styles/images/kindpng_2140500.png'
 import paw from '../../styles/images/paw.png'
-
+import { Link } from 'react-router-dom'
 
 export const Home = ({ pets }) => {
 
@@ -28,40 +28,59 @@ export const Home = ({ pets }) => {
             </article>
             <article className='daycare-content'>
                 <section className='box-service-1'>
-                    <i class="fa fa-paw" aria-hidden="true" id='paw-up'></i>
+                    <i class="fa fa-home" aria-hidden="true" id='house'></i>
                     <h1>Daycare</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>More Details</button>
-                    <i class="fa fa-paw" aria-hidden="true"></i>
+                    <Link to={''}><button>More Details</button> <i class="fa-solid fa-arrow-right fa-beat-fade"></i></Link>
                 </section>
                 <section className='box-service-2'>
-                    <i class="fa fa-paw" aria-hidden="true" id='paw-up'></i>
+                    <i class="fa-solid fa-dog fa-beat-fade" id='dog'></i>
                     <h1>Grooming</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>More Details</button>
-                    <i class="fa fa-paw" aria-hidden="true"></i>
+                    <button>More Details</button> <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
                 </section>
                 <section className='box-service-3'>
-                    <i class="fa fa-paw" aria-hidden="true" id='paw-up'></i>
+                    <i class="fa-brands fa-shopify fa-bounce" id='shop'></i>
                     <h1>Shop</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>More Details</button>
-                    <i class="fa fa-paw" aria-hidden="true"></i>
+                    <button>More Details</button> <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
                 </section>
                 <section className='box-service-4'>
-                    <i class="fa fa-paw" aria-hidden="true" id='paw-up'></i>
+                    <i class="fa-solid fa-hotel"></i>
                     <h1>Boarding</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>More Details</button>
-                    <i class="fa fa-paw" aria-hidden="true"></i>
+                    <button>More Details</button> <i class="fa-solid fa-arrow-right fa-beat-fade" ></i>
                 </section>
                 <section className='box-service-5'>
-                    <i class="fa fa-paw" aria-hidden="true" id='paw-up'></i>
+                    <i class="fa-solid fa-shield-dog"></i>
                     <h1>Veterinary</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <button>More Details</button>
-                    <i class="fa fa-paw" aria-hidden="true"></i>
+                    <button>More Details</button> <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
                 </section>
+            </article>
+            <article className='daycare-us'>
+                <div className='choose'>
+                    <h1>Why Choose Us</h1>
+                    <p>Enjoy Your Holiday We Can Keep Them Happy Your Pet Our Priority Happy Pets, Happy Humans We Are The Best Of This Country We Are Always Ready For Your Pet.</p>
+                </div>
+                <div className='points'>
+                    <section className='first-point'>
+                        <h1>Personalized Care</h1>
+                        <p>Pellentesque maximus augue orci, quis congue purus iaculison</p>
+                    </section>
+                    <section className='second-point'>
+                        <h1>Trusted Team</h1>
+                        <p>Pellentesque maximus augue orci, quis congue purus iaculison</p>
+                    </section>
+                    <section className='third-point'>
+                    <h1>Piece of Mind</h1>
+                        <p>Pellentesque maximus augue orci, quis congue purus iaculison</p>
+                    </section>
+                    <section className='fourth-point'>
+                        <h1>Nice Environment</h1>
+                        <p>Pellentesque maximus augue orci, quis congue purus iaculison</p>
+                    </section>
+                </div>
             </article>
         </>
     )

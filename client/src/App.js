@@ -13,7 +13,6 @@ function App() {
 
 	useEffect(() => {
 		petsService.getPets()
-			// .then(res => setPet(Object.values(res)))
 			.then(res => setPet(Object.values(res)))
 		
 	}, [])

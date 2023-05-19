@@ -40,6 +40,7 @@ strong {
     width: 29%;
     height: 86%;
 }
+
 .title-buttons button {
     padding: 10px 35px;
     border-radius: 8px;
@@ -48,7 +49,7 @@ strong {
     border: 0px;
 }
 
-.title-buttons button:hover{
+.title-buttons button:hover {
     cursor: pointer;
     box-shadow: 0px 3px 13px 2px #8b6149;
 }
@@ -66,22 +67,38 @@ strong {
     display: flex;
 }
 
-.box-service-1, 
-.box-service-2, 
-.box-service-3, 
-.box-service-4, 
+.box-service-1,
+.box-service-2,
+.box-service-3,
+.box-service-4,
 .box-service-5 {
- 
+
     padding: 45px 9px;
-    
+
 }
 
-#paw-up {
-    transform: rotate(45deg);
-    position: relative;
-    left: 50%;
-    bottom: 25%;
+.box-service-1 button,
+.box-service-2 button,
+.box-service-3 button,
+.box-service-4 button,
+.box-service-5 button {
+
+    border: 0px;
+    background-color: transparent;
+    font-weight: 800;
+
 }
+
+
+.fa-home:before,
+.fa-dog:before,
+.fa-shopify:before,
+.fa-hotel:before,
+.fa-shield-dog:before {
+    font-size: 8rem;
+    color: bisque;
+}
+
 
 .box-service-1 {
     background-color: #ffdcda7a;
@@ -98,7 +115,11 @@ strong {
 .box-service-4 {
     background-color: lightgoldenrodyellow;
 }
+
 .box-service-5 {
     background-color: lightcyan;
 }
 
+.daycare-us{
+    background-color: plum;
+}
