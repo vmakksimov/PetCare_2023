@@ -21,6 +21,11 @@
     color: white;
 }
 
+.header-elements li a {
+    text-decoration: none;
+    color: white;
+}
+
 .header-buttons:hover{
    background-color: coral;
     cursor: pointer;

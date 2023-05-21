@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import './styles/css/styles.css'
-
+import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import * as petsService from './services/petsService'
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
+import { Register } from './components/Register/Register';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
 	useEffect(() => {
 		petsService.getPets()
 			.then(res => setPet(Object.values(res)))
-		
+
 	}, [])
 
 	return (
@@ -23,9 +24,12 @@ function App() {
 			<Header />
 
 			<div className='main-app'>
-				<Home pets={pets}/>
+				<Routes>
+					<Route path='/' element={<Home pets={pets} />} />
+					<Route path='/register' element={<Register />} />
+				</Routes>
 			</div>
-			<Footer/>
+			<Footer />
 		</div>
 	);
 }
