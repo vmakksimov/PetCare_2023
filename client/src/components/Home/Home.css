@@ -101,15 +101,15 @@ strong {
 
 
 .box-service-1 {
-    background-color: #ffdcda7a;
+    background-color: #fbf3f5;
 }
 
 .box-service-2 {
-    background-color: lightblue;
+    background-color: #f2f5f2;
 }
 
 .box-service-3 {
-    background-color: lightpink;
+    background-color: #fef8ef;
 }
 
 .box-service-4 {
@@ -121,5 +121,9 @@ strong {
 }
 
 .daycare-us{
-    background-color: plum;
+    background-color: #f5f2fc;
+}
+
+.points {
+    display: flex;
 }
