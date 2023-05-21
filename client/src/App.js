@@ -6,6 +6,7 @@ import { Header } from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import * as petsService from './services/petsService'
 import { Home } from './components/Home/Home';
+import { Footer } from './components/Footer/Footer';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 			<div className='main-app'>
 				<Home pets={pets}/>
 			</div>
+			<Footer/>
 		</div>
 	);
 }
