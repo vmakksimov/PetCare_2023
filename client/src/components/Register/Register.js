@@ -3,7 +3,7 @@ import './Register.css'
 export const Register = () => {
     return (
         <section className="daycare-registration">
-            <article className="daycare-registration-title">Registration</article>
+            <article className="daycare-registration-title"><h1>Registration</h1></article>
             <article className="daycare-form">
                 <form action="#">
                     <div className="user-details">
