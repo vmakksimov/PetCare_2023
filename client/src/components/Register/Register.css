@@ -12,4 +12,14 @@
     margin: 150px auto;
     /* border: 0px solid #ebe9e9; */
     box-shadow: 1px 1px 10px 2px;
+    width: 50%;
+}
+
+.user-details {
+    margin: 15px;
+}
+
+.user-details input {
+    width: 40%;
+    padding: 9px;
 }
