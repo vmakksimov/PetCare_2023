@@ -13,6 +13,7 @@
     /* border: 0px solid #ebe9e9; */
     box-shadow: 1px 1px 10px 2px;
     width: 50%;
+    background: linear-gradient(90deg, rgba(255,247,242,1) 0%, rgba(243,215,173,1) 52%, rgba(246,180,142,1) 100%);
 }
 
 .daycare-registration-title {
@@ -34,10 +35,22 @@
 }
 
 .form-button input {
+    cursor: pointer;
     border: 0px;
     color: white;
     width: 39%;
     padding: 8px 15px;
     border-radius: 6px;
-    background: linear-gradient(90deg, rgba(195,170,150,1) 0%, rgba(243,215,173,1) 50%, rgba(244,227,219,1) 99%);
+    background: linear-gradient(90deg, rgb(255 255 255) 0%, rgb(221 192 176) 52%, rgba(139,97,73,1) 100%);
+}
+
+.form-button input:hover{
+    box-shadow: 0px 0px 12px 4px lightgray;
+}
+
+.form h3 {
+    font-size: 15px;
+    font-family: Helvetica;
+    margin: 5;
+    margin: 2rem;
 }

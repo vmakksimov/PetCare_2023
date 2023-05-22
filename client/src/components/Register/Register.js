@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom'
 import './Register.css'
 
 export const Register = () => {
     return (
         <section className="daycare-registration">
-            <article className="daycare-registration-title"><h1>Registration</h1></article>
+            <article className="daycare-registration-title"><h1>CREATE ACCOUNT</h1></article>
             <article className="daycare-form">
-                <form action="#">
+                <form className='form' action="#">
                     <div className="user-details">
                         <input type="text" name="username" placeholder="Username"></input>
                     </div>
@@ -29,9 +30,11 @@ export const Register = () => {
                         <p>I agree with T&C</p>
                     </div>
                     <div className="form-button">
-                        <input type="submit" value="Register" />
+                        <input type="submit" value="SIGN UP" />
                     </div>
+                    <h3>Have already an account? <Link>Login here</Link></h3>
                 </form>
+                
             </article>
 
         </section>
