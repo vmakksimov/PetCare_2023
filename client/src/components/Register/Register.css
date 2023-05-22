@@ -8,6 +8,11 @@
     font-size: 13px;
 }
 
+.daycare-registration-image{
+    background-image: url('../../styles/images/registration_pal.png');
+    display: flex;
+    background-position: center;
+}
 .daycare-registration {
     margin: 150px auto;
     /* border: 0px solid #ebe9e9; */
