@@ -1,7 +1,25 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import './Register.css'
 
 export const Register = () => {
+    const [shownPassword, setShownPassword] = useState('password')
+    const [passwordInput, setPasswordInput] = useState("");
+    const handlePasswordChange = (evnt) => {
+        evnt.preventDefault();
+        setPasswordInput(evnt.target.value);
+    }
+
+    const togglePassword = () => {
+        if (shownPassword == 'password') {
+            setShownPassword('text')
+            return
+        }
+
+        setShownPassword('password')
+        return
+    };
+
     return (
         <article className='daycare-registration-image'>
             <section className="daycare-registration">
@@ -21,10 +39,17 @@ export const Register = () => {
                             <input type="text" name="last_name" placeholder="Last Name"></input>
                         </div>
                         <div className="user-details">
-                            <input type="password" name="password" placeholder="Password"></input>
+                            <input type={shownPassword} onChange={handlePasswordChange} value={passwordInput} name="password" placeholder="Password"></input>
+                            <div className='showspass'>
+                                <button onClick={togglePassword}>{shownPassword === 'password' ? <i className="fa-solid fa-eye"></i> : <i className="fa-regular fa-eye-slash"></i>}</button>
+                            </div>
                         </div>
+
                         <div className="user-details">
-                            <input type="password" name="re_password" placeholder="Confirm Password"></input>
+
+                            <input type='password' name="re_password" placeholder="Confirm Password" ></input>
+
+
                         </div>
                         <div className="confirm-form">
                             <input type="checkbox" />

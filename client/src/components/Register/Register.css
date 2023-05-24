@@ -59,3 +59,15 @@
     margin: 5;
     margin: 2rem;
 }
+
+.showspass {
+    display: flex;
+    position: absolute;
+    padding-top: 8px;
+    right: 41%;
+}
+
+.user-details:nth-child(5) {
+    display: flex;
+    justify-content: center;
+}
