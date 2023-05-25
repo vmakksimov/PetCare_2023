@@ -47,14 +47,14 @@ export const Register = () => {
     const onSubmitForm = (e) => {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target))
-        
+        console.log(data)
         if (data.checkbox){
-            console.log('continue')
+            setError({})
         }else{
             setError({
-                [e.target.name]: values[e.target.name]
+                ['checkbox']: 'checkbox'
             })
-            return
+           return;
         }
        
     }
@@ -98,10 +98,11 @@ export const Register = () => {
                         {errors.checkbox &&
                                 <p className="form-error" style={{color:'red'}}>
                                     You must agree with T&C!
+                                    {console.log(values)}
                                 </p>
                             }
                         <div className="form-button">
-                            <input type="submit" value="SIGN UP" />
+                            <input type="submit" value="SIGN UP"  />
                         </div>
                         <h3>Have already an account? <Link>Login here</Link></h3>
                     </form>
