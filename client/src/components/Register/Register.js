@@ -4,25 +4,41 @@ import './Register.css'
 
 export const Register = () => {
     const [shownPassword, setShownPassword] = useState('password')
+    const [shownRePassword, setShownRePassword] = useState('password')
     const [passwordInput, setPasswordInput] = useState("");
+    const [rePasswordInput, setRePasswordInput] = useState("");
     const [errors, setError] = useState({})
     const [values, setValues] = useState({
         checkbox: '',
     })
     const handlePasswordChange = (evnt) => {
         evnt.preventDefault();
-        setPasswordInput(evnt.target.value);
+        if (evnt.target.name == 'password'){
+            setPasswordInput(evnt.target.value);
+        }else {
+            setRePasswordInput(evnt.target.value)
+        }
     }
 
-    const togglePassword = () => {
-        if (shownPassword == 'password') {
-            setShownPassword('text')
-
-        } else {
-            setShownPassword('password')
+    const togglePassword = (e) => {
+        if (e.target.parentElement.parentElement.children[0].name == 'password'){
+            if (shownPassword == 'password') {
+              
+                setShownPassword('text')
+    
+            } else {
+                setShownPassword('password')
+            }
+        }else{
+         
+            if (shownRePassword == 'password') {
+                setShownRePassword('text')
+    
+            } else {
+                setShownRePassword('password')
+            }
         }
-
-
+      
     };
 
     const onChangeHandler = (e) => {
@@ -37,7 +53,7 @@ export const Register = () => {
         e.preventDefault();
         console.log(e.target)
         console.log(e)
-        if (values.checkbox !== 'on'){
+        if (values.checkbox !== 'on') {
             setError({
                 [e.target.name]: values[e.target.name]
             })
@@ -47,16 +63,15 @@ export const Register = () => {
     const onSubmitForm = (e) => {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target))
-        console.log(data)
-        if (data.checkbox){
+        if (data.checkbox) {
             setError({})
-        }else{
+        } else {
             setError({
                 ['checkbox']: 'checkbox'
             })
-           return;
+            return;
         }
-       
+
     }
 
     return (
@@ -86,7 +101,10 @@ export const Register = () => {
 
                         <div className="user-details">
 
-                            <input type={shownPassword} onChange={handlePasswordChange} value={passwordInput} name="re_password" placeholder="Confirm Password" ></input>
+                            <input type={shownRePassword} onChange={handlePasswordChange} value={rePasswordInput} name="re_password" placeholder="Confirm Password" ></input>
+                            <div className='showspass'>
+                                {shownRePassword === 'password' ? <i className="fa-solid fa-eye" onClick={togglePassword}></i> : <i className="fa-regular fa-eye-slash" onClick={togglePassword}></i>}
+                            </div>
 
 
 
@@ -96,13 +114,13 @@ export const Register = () => {
                             <p>I agree with T&C</p>
                         </div>
                         {errors.checkbox &&
-                                <p className="form-error" style={{color:'red'}}>
-                                    You must agree with T&C!
-                                    {console.log(values)}
-                                </p>
-                            }
+                            <p className="form-error" style={{ color: 'red' }}>
+                                You must agree with T&C!
+                                {console.log(values)}
+                            </p>
+                        }
                         <div className="form-button">
-                            <input type="submit" value="SIGN UP"  />
+                            <input type="submit" value="SIGN UP" />
                         </div>
                         <h3>Have already an account? <Link>Login here</Link></h3>
                     </form>
