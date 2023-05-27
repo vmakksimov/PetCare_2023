@@ -14,6 +14,9 @@ export const Login = () => {
                     <div className="user-details">
                         <input type='password' name="password" placeholder='password'></input>
                     </div>
+                    <div className="user-details">
+                        <input type='password' name="re_password" placeholder='confirm password'></input>
+                    </div>
                     <div className="form-button">
                             <input type="submit" value="SIGN IN" />
                     </div>

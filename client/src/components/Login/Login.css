@@ -5,3 +5,8 @@
     box-shadow: 0px 0px 15px 0px black;
     background: linear-gradient(90deg, rgba(255,247,242,1) 0%, rgba(243,215,173,1) 52%, rgba(246,180,142,1) 100%);
 }
+
+.user-details input {
+    background: transparent;
+    border-radius: 8px;
+}
