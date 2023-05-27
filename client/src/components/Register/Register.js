@@ -77,7 +77,7 @@ export const Register = () => {
     return (
         <article className='daycare-registration-image'>
             <section className="daycare-registration">
-                <article className="daycare-registration-title"><h1>CREATE ACCOUNT</h1></article>
+                <article className="form-title"><h1>CREATE ACCOUNT</h1></article>
                 <article className="daycare-form">
                     <form className='form' action="POST" onSubmit={onSubmitForm} >
                         <div className="user-details">
@@ -122,7 +122,7 @@ export const Register = () => {
                         <div className="form-button">
                             <input type="submit" value="SIGN UP" />
                         </div>
-                        <h3>Have already an account? <Link>Login here</Link></h3>
+                        <h3 className='account-h3'>Have already an account? <Link>Login here</Link></h3>
                     </form>
 
                 </article>

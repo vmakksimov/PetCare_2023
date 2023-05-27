@@ -21,12 +21,12 @@
     background: linear-gradient(90deg, rgba(255,247,242,1) 0%, rgba(243,215,173,1) 52%, rgba(246,180,142,1) 100%);
 }
 
-.daycare-registration-title {
+.form-title {
     display: flex;
     flex-direction: column;
 }
 
-.daycare-registration-title h1 {
+.form-title h1 {
     margin-top: 4%;
 }
 
@@ -53,7 +53,7 @@
     box-shadow: 0px 0px 12px 4px lightgray;
 }
 
-.form h3 {
+.account-h3 {
     font-size: 15px;
     font-family: Helvetica;
     margin: 5;

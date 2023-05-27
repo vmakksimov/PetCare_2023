@@ -10,7 +10,7 @@ export const Header = () => {
             </div>
             <ul className="header-elements">
                 <li className='header-buttons'><Link to='/'>Home</Link></li>
-                <li className='header-buttons'>Login</li>
+                <li className='header-buttons'><Link to='/login'>Login</Link></li>
                 <li className='header-buttons'><Link to='/register'>Register</Link></li>
                 <li className='header-buttons'>Add Pet</li>
                 <li className='header-buttons'>Services</li>
