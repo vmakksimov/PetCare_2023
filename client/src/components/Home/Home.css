@@ -127,3 +127,25 @@ strong {
 .points {
     display: flex;
 }
+
+.choose {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.choose h1 {
+    margin: 0px;
+    font-size: 3rem;
+}
+
+.choose p {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'FontAwesome';
+    width: 81%;
+    line-height: 2.5;
+    letter-spacing: 5.5px;
+}
