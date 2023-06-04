@@ -5,6 +5,18 @@ from PetCare_2023.common.validators import file_max_size_in_mb
 
 # Create your models here.
 
+class Users(models.Model):
+
+    name = models.CharField(max_length=20)
+    email = models.EmailField(
+        null=True,
+        blank=True,
+        unique=True,
+    )
+
+    nickname = models.CharField(max_length=10, unique=True)
+    first_name = models.CharField(max_length=10)
+    last_name = models.CharField(max_length=10)
 class Pet(models.Model):
     CAT = 'Cat'
     DOG = 'Dog'

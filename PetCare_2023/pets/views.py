@@ -18,12 +18,14 @@ class ImageSerializer(serializers.ModelSerializer):
         model = Pet
         fields = ('name', 'image')
 
-class PetsListView(rest_views.ListAPIView):
+class PetsListView(rest_views.ListCreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetsSerializer
 
+# class RegisterUserView(rest_views.ListCreateAPIView):
+#     pass
 
-class ImageViewSet(rest_views.ListAPIView):
+class ImageViewSet(rest_views.ListCreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = ImageSerializer
 

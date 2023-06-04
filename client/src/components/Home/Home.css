@@ -149,3 +149,8 @@ strong {
     line-height: 2.5;
     letter-spacing: 5.5px;
 }
+
+.first-point i, .second-point i, .third-point i, .fourth-point i{
+    color: #ff7f50;
+    font-size: 35px;
+}
