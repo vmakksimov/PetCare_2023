@@ -7,7 +7,6 @@ from PetCare_2023.common.validators import file_max_size_in_mb
 
 class Users(models.Model):
 
-    name = models.CharField(max_length=20)
     email = models.EmailField(
         null=True,
         blank=True,
@@ -17,6 +16,9 @@ class Users(models.Model):
     nickname = models.CharField(max_length=10, unique=True)
     first_name = models.CharField(max_length=10)
     last_name = models.CharField(max_length=10)
+
+    class Meta:
+        verbose_name = 'User'
 class Pet(models.Model):
     CAT = 'Cat'
     DOG = 'Dog'
@@ -57,5 +59,9 @@ class Pet(models.Model):
         null=True,
     )
 
+
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Pets'
