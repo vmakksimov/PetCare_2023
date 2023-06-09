@@ -6,13 +6,14 @@ from rest_framework.utils import json
 
 from PetCare_2023.pets.models import Pet, Users
 
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import UserSerializer,RegisterSerializer
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import generics
+from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 
 # Class based view to Get User Details using Token Authentication
 class UserDetailAPI(APIView):
@@ -51,9 +52,14 @@ class ImageSerializer(serializers.ModelSerializer):
 API VIEWS
 
 '''
+
+class ReadOnly(BasePermission):
+    def has_permission(self, request, view):
+        return request.method in SAFE_METHODS
 class PetsListView(rest_views.ListCreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetsSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class RegisterUserView(rest_views.ListCreateAPIView):
     queryset = Users.objects.all()

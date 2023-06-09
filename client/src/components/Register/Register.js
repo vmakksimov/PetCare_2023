@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import * as AuthService from '../../services/authService'
+import * as PetsService from '../../services/petsService'
 import './Register.css'
 
 export const Register = () => {
@@ -7,38 +9,39 @@ export const Register = () => {
     const [shownRePassword, setShownRePassword] = useState('password')
     const [passwordInput, setPasswordInput] = useState("");
     const [rePasswordInput, setRePasswordInput] = useState("");
+    const navigate = useNavigate()
     const [errors, setError] = useState({})
     const [values, setValues] = useState({
         checkbox: '',
     })
     const handlePasswordChange = (evnt) => {
         evnt.preventDefault();
-        if (evnt.target.name == 'password'){
+        if (evnt.target.name == 'password') {
             setPasswordInput(evnt.target.value);
-        }else {
+        } else {
             setRePasswordInput(evnt.target.value)
         }
     }
 
     const togglePassword = (e) => {
-        if (e.target.parentElement.parentElement.children[0].name == 'password'){
+        if (e.target.parentElement.parentElement.children[0].name == 'password') {
             if (shownPassword == 'password') {
-              
+
                 setShownPassword('text')
-    
+
             } else {
                 setShownPassword('password')
             }
-        }else{
-         
+        } else {
+
             if (shownRePassword == 'password') {
                 setShownRePassword('text')
-    
+
             } else {
                 setShownRePassword('password')
             }
         }
-      
+
     };
 
     const onChangeHandler = (e) => {
@@ -72,6 +75,28 @@ export const Register = () => {
             return;
         }
 
+        const formData = new FormData(e.target)
+        const email = formData.get('email')
+        const password = formData.get('password')
+        const username = formData.get('username')
+        const first_name = formData.get('first_name')
+        const last_name = formData.get('last_name')
+        const password2 = formData.get('re_password')
+
+        PetsService.getUsers()
+        .then(res => {
+            console.log(res)
+        })
+
+        AuthService.register(username, email, first_name, last_name, password, password2)
+            .then(res => {
+                console.log(res)
+                navigate('/')
+            })
+
+            .catch(() => {
+                navigate('/')
+            })
     }
 
     return (
