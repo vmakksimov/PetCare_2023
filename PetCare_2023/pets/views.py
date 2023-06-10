@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from rest_framework import generics as rest_views
+from rest_framework import generics as rest_views, permissions, status
 from rest_framework import serializers
 from rest_framework.utils import json
 
@@ -59,7 +59,9 @@ class ReadOnly(BasePermission):
 class PetsListView(rest_views.ListCreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetsSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = (AllowAny,)
+
+
 
 class RegisterUserView(rest_views.ListCreateAPIView):
     queryset = Users.objects.all()

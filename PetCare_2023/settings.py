@@ -67,6 +67,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
 
+APPEND_SLASH=False
+
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",

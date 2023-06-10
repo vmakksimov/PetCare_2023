@@ -4,7 +4,7 @@ import * as AuthService from '../../services/authService'
 import * as PetsService from '../../services/petsService'
 import './Register.css'
 
-export const Register = () => {
+export const Register = ({userLogin}) => {
     const [shownPassword, setShownPassword] = useState('password')
     const [shownRePassword, setShownRePassword] = useState('password')
     const [passwordInput, setPasswordInput] = useState("");
@@ -83,14 +83,14 @@ export const Register = () => {
         const last_name = formData.get('last_name')
         const password2 = formData.get('re_password')
 
-        PetsService.getUsers()
-        .then(res => {
-            console.log(res)
-        })
+        // PetsService.getUsers()
+        // .then(res => {
+        //     console.log(res)
+        // })
 
         AuthService.register(username, email, first_name, last_name, password, password2)
             .then(res => {
-                console.log(res)
+                userLogin(res)
                 navigate('/')
             })
 

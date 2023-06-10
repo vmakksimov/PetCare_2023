@@ -20,9 +20,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework.authtoken import views
 
+from PetCare_2023 import pets
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('PetCare_2023.pets.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('', include('PetCare_2023.pets.urls')),
+
     path('api-token-auth', views.obtain_auth_token),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,10 +9,17 @@ import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 
 function App() {
+	const [user, setAuth] = useLocalStorage('auth', {})
 	const [pets, setPet] = useState([])
+
+	const userLogin = (authData) => {
+		setAuth(authData)
+	}
+
 
 	useEffect(() => {
 		petsService.getPets()
@@ -27,7 +34,7 @@ function App() {
 			<div className='main-app'>
 				<Routes>
 					<Route path='/' element={<Home pets={pets} />} />
-					<Route path='/register' element={<Register />} />
+					<Route path='/register' element={<Register userLogin={userLogin} />} />
 					<Route path='/login' element={<Login />} />
 				</Routes>
 			</div>
