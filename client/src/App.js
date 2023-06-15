@@ -11,6 +11,7 @@ import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { AuthContext } from './components/context/AuthContext';
+import { Logout } from './components/Logout/Logout';
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
 		setAuth(authData)
 	}
 
+	const userLogout = () => {
+		setAuth({})
+	}
+
 
 	useEffect(() => {
 		petsService.getPets()
@@ -29,7 +34,7 @@ function App() {
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{user, userLogin}}>
+		<AuthContext.Provider value={{user, userLogin, userLogout}}>
 		<div className="App">
 			<Header />
 
@@ -38,6 +43,7 @@ function App() {
 					<Route path='/' element={<Home pets={pets} />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/login' element={<Login />} />
+					<Route path='/logout' element={<Logout />} />
 				</Routes>
 			</div>
 			<Footer />

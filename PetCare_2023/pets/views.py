@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from rest_framework import generics as rest_views, permissions, status
+from rest_framework import generics as rest_views, views as rest_logout_view
 from rest_framework import serializers
 from rest_framework.utils import json
 
@@ -28,25 +28,7 @@ class UserDetailAPI(APIView):
     return Response(serializer.data)
 
 #Class based view to register user
-class RegisterUserAPIView(generics.CreateAPIView):
-  permission_classes = (AllowAny,)
-  serializer_class = RegisterSerializer
 
-
-class LoginAPIView(ObtainAuthToken):
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            'accessToken': token.key,
-            '_id': user.pk,
-            'email': user.email,
-            'username': user.username
-        })
 '''
 
 SERIALIZERS
@@ -70,6 +52,43 @@ class ImageSerializer(serializers.ModelSerializer):
 API VIEWS
 
 '''
+
+class RegisterUserAPIView(generics.CreateAPIView):
+  permission_classes = (AllowAny,)
+  serializer_class = RegisterSerializer
+
+
+class LoginAPIView(ObtainAuthToken):
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'accessToken': token.key,
+            '_id': user.pk,
+            'email': user.email,
+            'username': user.username
+        })
+
+
+
+
+
+class LogOutAPIView(rest_logout_view.APIView):
+    def get(self, request):
+        return self.__perform_logout(request)
+    def post(self, request):
+        return self.__perform_logout(request)
+
+    @staticmethod
+    def __perform_logout(request):
+        request.user.auth_token.delete()
+        return Response({
+            'message': 'user logged out succesfully'
+        })
 
 class ReadOnly(BasePermission):
     def has_permission(self, request, view):

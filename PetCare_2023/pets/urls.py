@@ -1,7 +1,7 @@
 from django.urls import path
 
 from PetCare_2023.pets.views import PetsListView, ImageViewSet, RegisterUserView, UserDetailAPI, RegisterUserAPIView, \
-    LoginAPIView
+    LoginAPIView, LogOutAPIView
 
 urlpatterns = (
     path('pets/', PetsListView.as_view(), name='pets'),
@@ -10,5 +10,6 @@ urlpatterns = (
     path('get-details/',UserDetailAPI.as_view(), name='user details'),
     path('register/',RegisterUserAPIView.as_view(), name='register'),
     path('login/', LoginAPIView.as_view(), name='login'),
+    path('logout/', LogOutAPIView.as_view(), name='logout'),
 
 )

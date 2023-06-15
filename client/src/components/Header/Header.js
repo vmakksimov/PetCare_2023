@@ -18,6 +18,7 @@ export const Header = () => {
                 {user.accessToken 
                 && <><li className='header-buttons'>Add Pet</li>
                     <li className='header-buttons'>Services</li>
+                    <li className='header-buttons'><Link to='/logout'>Logout</Link></li>
                     </>
                 }
                 {!user.accessToken && <>
@@ -25,9 +26,6 @@ export const Header = () => {
                  <li className='header-buttons'><Link to='/register'>Register</Link></li>
                  </>
                 }
-                
-                
-            
                 
                 
             </ul>
