@@ -1,14 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import * as AuthService from '../../services/authService'
 import * as PetsService from '../../services/petsService'
 import './Register.css'
+import { AuthContext } from '../context/AuthContext'
 
-export const Register = ({userLogin}) => {
+export const Register = () => {
     const [shownPassword, setShownPassword] = useState('password')
     const [shownRePassword, setShownRePassword] = useState('password')
     const [passwordInput, setPasswordInput] = useState("");
     const [rePasswordInput, setRePasswordInput] = useState("");
+    const {userLogin} = useContext(AuthContext)
+    
     const navigate = useNavigate()
     const [errors, setError] = useState({})
     const [values, setValues] = useState({

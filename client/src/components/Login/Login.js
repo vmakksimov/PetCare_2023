@@ -1,10 +1,15 @@
 import './Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import img_login from '../../styles/images/login.png'
 import friends from '../../styles/images/friends7.jpg'
 import { login } from '../../services/authService'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 export const Login = () => {
+
+    const {userLogin} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onLogin = (e) => {
 
@@ -15,7 +20,9 @@ export const Login = () => {
 
         login(username, password)
             .then(res => {
-                console.log(res)
+                userLogin(res)
+                navigate('/')
+                
             })
     }
     return (

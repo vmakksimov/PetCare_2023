@@ -10,6 +10,7 @@ import { Footer } from './components/Footer/Footer';
 import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { AuthContext } from './components/context/AuthContext';
 
 
 function App() {
@@ -28,18 +29,20 @@ function App() {
 	}, [])
 
 	return (
+		<AuthContext.Provider value={{userLogin}}>
 		<div className="App">
 			<Header />
 
 			<div className='main-app'>
 				<Routes>
 					<Route path='/' element={<Home pets={pets} />} />
-					<Route path='/register' element={<Register userLogin={userLogin} />} />
+					<Route path='/register' element={<Register />} />
 					<Route path='/login' element={<Login />} />
 				</Routes>
 			</div>
 			<Footer />
 		</div>
+		</AuthContext.Provider>
 	);
 }
 
