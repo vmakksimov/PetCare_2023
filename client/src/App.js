@@ -29,7 +29,7 @@ function App() {
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{userLogin}}>
+		<AuthContext.Provider value={{user, userLogin}}>
 		<div className="App">
 			<Header />
 
