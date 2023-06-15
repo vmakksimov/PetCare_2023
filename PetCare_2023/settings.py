@@ -41,12 +41,18 @@ INSTALLED_APPS = [
     'PetCare_2023.pets',
     'rest_framework',
     "corsheaders",
+    'rest_framework.authtoken'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',# <-- And here
+    ],
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

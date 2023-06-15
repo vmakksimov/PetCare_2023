@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from rest_framework.authtoken.models import Token
 
 #Serializer to Get User Details using Django Token Authentication
 class UserSerializer(serializers.ModelSerializer):
@@ -46,4 +47,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     )
     user.set_password(validated_data['password'])
     user.save()
+
+    # Token.objects.create(user=user)
     return user
