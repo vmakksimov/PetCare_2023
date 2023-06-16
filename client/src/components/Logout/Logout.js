@@ -18,5 +18,5 @@ export const Logout = () => {
             .catch(() => {
                 navigate('/')
             })
-    })
+    }, [])
 }

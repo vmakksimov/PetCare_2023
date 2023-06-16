@@ -78,6 +78,7 @@ class LoginAPIView(ObtainAuthToken):
 
 
 class LogOutAPIView(rest_logout_view.APIView):
+
     def get(self, request):
         return self.__perform_logout(request)
     def post(self, request):
@@ -85,6 +86,12 @@ class LogOutAPIView(rest_logout_view.APIView):
 
     @staticmethod
     def __perform_logout(request):
+        a = 5
+        if request.user.is_anonymous:
+            return Response({
+                'message': 'no current logged in user'
+            })
+
         request.user.auth_token.delete()
         return Response({
             'message': 'user logged out succesfully'

@@ -19,6 +19,7 @@ export const Header = () => {
                 && <><li className='header-buttons'>Add Pet</li>
                     <li className='header-buttons'>Services</li>
                     <li className='header-buttons'><Link to='/logout'>Logout</Link></li>
+                    <span className='greeting-span'>Welcome, {user.username}</span>
                     </>
                 }
                 {!user.accessToken && <>

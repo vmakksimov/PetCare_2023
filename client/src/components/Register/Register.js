@@ -4,6 +4,7 @@ import * as AuthService from '../../services/authService'
 import * as PetsService from '../../services/petsService'
 import './Register.css'
 import { AuthContext } from '../context/AuthContext'
+import { login } from '../../services/authService'
 
 export const Register = () => {
     const [shownPassword, setShownPassword] = useState('password')
@@ -93,6 +94,7 @@ export const Register = () => {
 
         AuthService.register(username, email, first_name, last_name, password, password2)
             .then(res => {
+                login(username, password)
                 userLogin(res)
                 navigate('/')
             })

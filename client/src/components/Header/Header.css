@@ -31,3 +31,16 @@
     cursor: pointer;
     box-shadow: 0px 3px 13px 2px white;
 }
+
+.greeting-span {
+    position: relative;
+    left: 15%;
+    top: 20%;
+    font-size: 24px;
+}
+
+.header-elements li:nth-child(4){
+    position: relative;
+    left: 65%;
+}
+  
