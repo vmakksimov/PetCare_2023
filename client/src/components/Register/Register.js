@@ -1,10 +1,10 @@
+import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import * as AuthService from '../../services/authService'
 import * as PetsService from '../../services/petsService'
-import './Register.css'
 import { AuthContext } from '../context/AuthContext'
-import { login } from '../../services/authService'
+
 
 export const Register = () => {
     const [shownPassword, setShownPassword] = useState('password')
@@ -18,10 +18,11 @@ export const Register = () => {
     const [values, setValues] = useState({
         checkbox: '',
         username: '',
+        exists: '',
     })
     const handlePasswordChange = (evnt) => {
         evnt.preventDefault();
-        if (evnt.target.name == 'password') {
+        if (evnt.target.name === 'password') {
             setPasswordInput(evnt.target.value);
         } else {
             setRePasswordInput(evnt.target.value)
@@ -29,8 +30,8 @@ export const Register = () => {
     }
 
     const togglePassword = (e) => {
-        if (e.target.parentElement.parentElement.children[0].name == 'password') {
-            if (shownPassword == 'password') {
+        if (e.target.parentElement.parentElement.children[0].name === 'password') {
+            if (shownPassword === 'password') {
 
                 setShownPassword('text')
 
@@ -39,7 +40,7 @@ export const Register = () => {
             }
         } else {
 
-            if (shownRePassword == 'password') {
+            if (shownRePassword === 'password') {
                 setShownRePassword('text')
 
             } else {
@@ -62,16 +63,32 @@ export const Register = () => {
         // const data = Object.fromEntries(new FormData(e.target))
         // console.log(data.username)
         console.log(e.target)
-        if (e.target.name == 'username'){
-            if (e.target.value.length < 2){
-                console.log('here')
-                setError({
-                    [e.target.name]: values[e.target.name]
-                })
-            }else{
-                setError({})
-            }
-        }
+
+        // if (values.checkbox !== 'on') {
+        //     setError({
+        //         [e.target.name]: values[e.target.name]
+        //     })
+        PetsService.getUsers()
+            .then(res => {
+                let currentUser = res.find(x => x.username === e.target.value)
+                if (e.target.name === 'username'){
+                    if (e.target.value.length < 2){
+                        console.log('here')
+                        setError({
+                            [e.target.name]: values[e.target.name]
+                        })
+                    }else if (currentUser){
+                        setError({
+                            exists: values[e.target.name]
+                        })
+                    }else{
+                        setError({})
+                    }
+                }
+                
+            })
+        
+      
 
         
     }
@@ -83,7 +100,7 @@ export const Register = () => {
             setError({})
         } else {
             setError({
-                ['checkbox']: 'checkbox'
+                checkbox: 'checkbox'
             })
             return;
         }
@@ -120,7 +137,8 @@ export const Register = () => {
                     <form className='form' action="POST" onSubmit={onSubmitForm} >
                         <div className="user-details">
                             <input type="text" name="username" placeholder="Username" onChange={onChangeHandler} values={values.username} onBlur={(e) => validationHandler(e)} ></input>
-                            {errors.username && <p>The username must be longer than 2 characters!</p>}
+                            {errors.username && <p>The username must be longer than 2 characters</p>}
+                            {errors.exists && <p>Username already exists!</p>}
                         </div>
                         
                         <div className="user-details">
