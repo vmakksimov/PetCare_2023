@@ -45,7 +45,7 @@ export const Login = () => {
                         <div className="form-button">
                             <input type="submit" value="SIGN IN" />
                         </div>
-                        <h3 className='account-h3'>Don't have an account? <Link>SIGN UP here</Link></h3>
+                        <h3 className='account-h3'>Don't have an account? <Link to='/register'>SIGN UP here</Link></h3>
                     </form>
                 </section>
             </article>

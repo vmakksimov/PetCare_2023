@@ -14,7 +14,7 @@ export const logout = async (accessToken) => {
 
         console.log('first')
 
-        return response
+        return response;
     } catch (error){
         console.log(error)
     }

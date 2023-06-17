@@ -17,6 +17,8 @@ from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_MET
 from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
 
 # Class based view to Get User Details using Token Authentication
 class UserDetailAPI(APIView):
@@ -86,7 +88,7 @@ class LogOutAPIView(rest_logout_view.APIView):
 
     @staticmethod
     def __perform_logout(request):
-        a = 5
+
         if request.user.is_anonymous:
             return Response({
                 'message': 'no current logged in user'
@@ -94,7 +96,7 @@ class LogOutAPIView(rest_logout_view.APIView):
 
         request.user.auth_token.delete()
         return Response({
-            'message': 'user logged out succesfully'
+            'message': 'user logged out successfully'
         })
 
 class ReadOnly(BasePermission):
@@ -105,7 +107,20 @@ class PetsListView(rest_views.ListCreateAPIView):
     serializer_class = PetsSerializer
     permission_classes = (AllowAny,)
 
+class UserViewSet(viewsets.ViewSet):
+    """
+    A simple ViewSet for listing or retrieving users.
+    """
+    def list(self, request):
+        queryset = User.objects.all()
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
 
+    def retrieve(self, request, pk=None):
+        queryset = User.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 class RegisterUserView(rest_views.ListCreateAPIView):
     queryset = Users.objects.all()

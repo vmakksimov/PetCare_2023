@@ -17,6 +17,7 @@ export const Register = () => {
     const [errors, setError] = useState({})
     const [values, setValues] = useState({
         checkbox: '',
+        username: '',
     })
     const handlePasswordChange = (evnt) => {
         evnt.preventDefault();
@@ -52,19 +53,27 @@ export const Register = () => {
         e.preventDefault();
         setValues(state => ({
             ...state,
-            [e.targe.name]: e.target.value
+            [e.target.name]: e.target.value
         }))
     }
 
     const validationHandler = (e) => {
         e.preventDefault();
+        // const data = Object.fromEntries(new FormData(e.target))
+        // console.log(data.username)
         console.log(e.target)
-        console.log(e)
-        if (values.checkbox !== 'on') {
-            setError({
-                [e.target.name]: values[e.target.name]
-            })
+        if (e.target.name == 'username'){
+            if (e.target.value.length < 2){
+                console.log('here')
+                setError({
+                    [e.target.name]: values[e.target.name]
+                })
+            }else{
+                setError({})
+            }
         }
+
+        
     }
 
     const onSubmitForm = (e) => {
@@ -94,7 +103,6 @@ export const Register = () => {
 
         AuthService.register(username, email, first_name, last_name, password, password2)
             .then(res => {
-                login(username, password)
                 userLogin(res)
                 navigate('/')
             })
@@ -111,8 +119,10 @@ export const Register = () => {
                 <article className="daycare-form">
                     <form className='form' action="POST" onSubmit={onSubmitForm} >
                         <div className="user-details">
-                            <input type="text" name="username" placeholder="Username"></input>
+                            <input type="text" name="username" placeholder="Username" onChange={onChangeHandler} values={values.username} onBlur={(e) => validationHandler(e)} ></input>
+                            {errors.username && <p>The username must be longer than 2 characters!</p>}
                         </div>
+                        
                         <div className="user-details">
                             <input type="text" name="email" placeholder="Email"></input>
                         </div>
@@ -152,7 +162,7 @@ export const Register = () => {
                         <div className="form-button">
                             <input type="submit" value="SIGN UP" />
                         </div>
-                        <h3 className='account-h3'>Have already an account? <Link>Login here</Link></h3>
+                        <h3 className='account-h3'>Have already an account? <Link to='/login'>Login here</Link></h3>
                     </form>
 
                 </article>
