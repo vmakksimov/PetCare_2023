@@ -2,8 +2,9 @@ import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import * as AuthService from '../../services/authService'
-import * as PetsService from '../../services/petsService'
+import * as UserService from '../../services/petsService'
 import { AuthContext } from '../context/AuthContext'
+import { validateEmail } from '../../Validation/Validators'
 
 
 export const Register = () => {
@@ -19,6 +20,10 @@ export const Register = () => {
         checkbox: '',
         username: '',
         exists: '',
+        email: '',
+        emailExists:'',
+        first_name: '',
+        last_name: '',
     })
     const handlePasswordChange = (evnt) => {
         evnt.preventDefault();
@@ -68,12 +73,12 @@ export const Register = () => {
         //     setError({
         //         [e.target.name]: values[e.target.name]
         //     })
-        PetsService.getUsers()
+        UserService.getUsers()
             .then(res => {
                 let currentUser = res.find(x => x.username === e.target.value)
+                let currentEmail = res.find(x => x.email ===e.target.value)
                 if (e.target.name === 'username'){
                     if (e.target.value.length < 2){
-                        console.log('here')
                         setError({
                             [e.target.name]: values[e.target.name]
                         })
@@ -84,8 +89,33 @@ export const Register = () => {
                     }else{
                         setError({})
                     }
-                }
-                
+                }else if (e.target.name === 'email'){
+                    if (!validateEmail(e.target.value)){
+                        setError({
+                            email: values[e.target.name]
+                        })
+                    }else if (currentEmail){
+                        setError({
+                            emailExists: values[e.target.name]
+                        })
+                    } else{
+                        setError({})
+                    }
+                }else if (e.target.name === 'first_name'){
+                    if (e.target.value.length < 2){
+                        setError({
+                            first_name: values[e.target.name]
+                        })
+                    }
+                }else if (e.target.name === 'last_name'){
+                    if (e.target.value.length < 2){
+                        setError({
+                            last_name: values[e.target.name]
+                        })
+                    }
+                } else {
+                    setError({})
+                }               
             })
         
       
@@ -142,25 +172,40 @@ export const Register = () => {
                         </div>
                         
                         <div className="user-details">
-                            <input type="text" name="email" placeholder="Email"></input>
+                            <input type="text" name="email" placeholder="Email" onChange={onChangeHandler} values={values.email} onBlur={(e) => validationHandler(e)}></input>
+                            {errors.email && <p>The email is invalid.</p>}
+                            {errors.emailExists && <p>The email already exists!</p>}
                         </div>
                         <div className="user-details">
-                            <input type="text" name="first_name" placeholder="First Name"></input>
+                            <input type="text" name="first_name" placeholder="First Name" onChange={onChangeHandler} values={values.first_name} onBlur={(e) => validationHandler(e)}></input>
+                            {errors.first_name && <p>The name should be at least 2 characters long.</p>}
                         </div>
                         <div className="user-details">
-                            <input type="text" name="last_name" placeholder="Last Name"></input>
+                            <input type="text" name="last_name" placeholder="Last Name" onChange={onChangeHandler} values={values.first_name} onBlur={(e) => validationHandler(e)}></input>
+                            {errors.last_name && <p>The name should be at least 2 characters long.</p>}
                         </div>
                         <div className="user-details">
                             <input type={shownPassword} onChange={handlePasswordChange} value={passwordInput} name="password" placeholder="Password"></input>
-                            <div className='showspass'>
+                            
+                            <div className='showspass-1'>
                                 {shownPassword === 'password' ? <i className="fa-solid fa-eye" onClick={togglePassword}></i> : <i className="fa-regular fa-eye-slash" onClick={togglePassword}></i>}
+                            </div>
+                            <div className='password-checks'>
+                                <ul className='password-checkers-1'>
+                                    <li>The password must be at least 8 characters long <i class="fa-light fa-x"></i></li>
+                                    <li>There must be at least one upper later <i class="fa-light fa-x"></i></li>
+                                </ul>
+                                <ul className='password-checkers-2'>
+                                    <li>There must at least one special sign <i class="fa-light fa-x"></i></li>
+                                    <li>There must be at least one digit <i class="fa-light fa-x"></i></li>
+                                </ul>
                             </div>
                         </div>
 
                         <div className="user-details">
 
                             <input type={shownRePassword} onChange={handlePasswordChange} value={rePasswordInput} name="re_password" placeholder="Confirm Password" ></input>
-                            <div className='showspass'>
+                            <div className='showspass-2'>
                                 {shownRePassword === 'password' ? <i className="fa-solid fa-eye" onClick={togglePassword}></i> : <i className="fa-regular fa-eye-slash" onClick={togglePassword}></i>}
                             </div>
 

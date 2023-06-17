@@ -21,14 +21,6 @@ from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 
 # Class based view to Get User Details using Token Authentication
-class UserDetailAPI(APIView):
-  authentication_classes = (TokenAuthentication,)
-  permission_classes = (AllowAny,)
-  def get(self,request,*args,**kwargs):
-    user = User.objects.get(id=request.user.id)
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
-
 #Class based view to register user
 
 '''
@@ -59,7 +51,6 @@ class RegisterUserAPIView(generics.CreateAPIView):
   permission_classes = (AllowAny,)
   serializer_class = RegisterSerializer
 
-
 class LoginAPIView(ObtainAuthToken):
 
     def post(self, request, *args, **kwargs):
@@ -75,12 +66,7 @@ class LoginAPIView(ObtainAuthToken):
             'username': user.username
         })
 
-
-
-
-
 class LogOutAPIView(rest_logout_view.APIView):
-
     def get(self, request):
         return self.__perform_logout(request)
     def post(self, request):
