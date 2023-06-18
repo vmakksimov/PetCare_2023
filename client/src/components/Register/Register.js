@@ -12,8 +12,8 @@ export const Register = () => {
     const [shownRePassword, setShownRePassword] = useState('password')
     const [passwordInput, setPasswordInput] = useState("");
     const [rePasswordInput, setRePasswordInput] = useState("");
-    const {userLogin} = useContext(AuthContext)
-    
+    const { userLogin } = useContext(AuthContext)
+
     const navigate = useNavigate()
     const [errors, setError] = useState({})
     const [values, setValues] = useState({
@@ -21,10 +21,27 @@ export const Register = () => {
         username: '',
         exists: '',
         email: '',
-        emailExists:'',
+        emailExists: '',
         first_name: '',
         last_name: '',
+        password_characters: '',
+        password_upper: '',
+        password_special: '',
+        password_digits: '',
     })
+    function containsUppercase(str) {
+        return /[A-Z]/.test(str);
+    }
+
+    function containsSpecialChars(str) {
+        const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        return specialChars.test(str);
+    }
+
+    function containsNumbers(str) {
+        return /\d/.test(str);
+    }
+
     const handlePasswordChange = (evnt) => {
         evnt.preventDefault();
         if (evnt.target.name === 'password') {
@@ -32,6 +49,11 @@ export const Register = () => {
         } else {
             setRePasswordInput(evnt.target.value)
         }
+
+        setValues(state => ({
+            ...state,
+            [evnt.target.name]: evnt.target.value
+        }))
     }
 
     const togglePassword = (e) => {
@@ -76,51 +98,72 @@ export const Register = () => {
         UserService.getUsers()
             .then(res => {
                 let currentUser = res.find(x => x.username === e.target.value)
-                let currentEmail = res.find(x => x.email ===e.target.value)
-                if (e.target.name === 'username'){
-                    if (e.target.value.length < 2){
+                let currentEmail = res.find(x => x.email === e.target.value)
+                if (e.target.name === 'username') {
+                    if (e.target.value.length < 2) {
                         setError({
                             [e.target.name]: values[e.target.name]
                         })
-                    }else if (currentUser){
+                    } else if (currentUser) {
                         setError({
                             exists: values[e.target.name]
                         })
-                    }else{
+                    } else {
                         setError({})
                     }
-                }else if (e.target.name === 'email'){
-                    if (!validateEmail(e.target.value)){
+                } else if (e.target.name === 'email') {
+                    if (!validateEmail(e.target.value)) {
                         setError({
                             email: values[e.target.name]
                         })
-                    }else if (currentEmail){
+                    } else if (currentEmail) {
                         setError({
                             emailExists: values[e.target.name]
                         })
-                    } else{
+                    } else {
                         setError({})
                     }
-                }else if (e.target.name === 'first_name'){
-                    if (e.target.value.length < 2){
+                } else if (e.target.name === 'first_name') {
+                    if (e.target.value.length < 2) {
                         setError({
                             first_name: values[e.target.name]
                         })
                     }
-                }else if (e.target.name === 'last_name'){
-                    if (e.target.value.length < 2){
+                } else if (e.target.name === 'last_name') {
+                    if (e.target.value.length < 2) {
                         setError({
                             last_name: values[e.target.name]
                         })
                     }
+                } else if (e.target.name === 'password') {
+                    if (e.target.value.length < 8) {
+                        setError({
+                            password_characters: values[e.target.name]
+                        })
+                    } else if (!containsUppercase(e.target.value)) {
+                        setError({
+                            password_upper: values[e.target.name]
+                        })
+                    } else if (!containsSpecialChars(e.target.value)){
+                        setError({
+                            password_special: values[e.target.name]
+                        })
+
+                    }else if (!containsNumbers(e.target.value)){
+                        setError({
+                            password_digits: values[e.target.name]
+                        })
+                    }else {
+                        setError({})
+                    }
                 } else {
                     setError({})
-                }               
+                }
             })
-        
-      
 
-        
+
+
+
     }
 
     const onSubmitForm = (e) => {
@@ -170,7 +213,7 @@ export const Register = () => {
                             {errors.username && <p>The username must be longer than 2 characters</p>}
                             {errors.exists && <p>Username already exists!</p>}
                         </div>
-                        
+
                         <div className="user-details">
                             <input type="text" name="email" placeholder="Email" onChange={onChangeHandler} values={values.email} onBlur={(e) => validationHandler(e)}></input>
                             {errors.email && <p>The email is invalid.</p>}
@@ -181,23 +224,23 @@ export const Register = () => {
                             {errors.first_name && <p>The name should be at least 2 characters long.</p>}
                         </div>
                         <div className="user-details">
-                            <input type="text" name="last_name" placeholder="Last Name" onChange={onChangeHandler} values={values.first_name} onBlur={(e) => validationHandler(e)}></input>
+                            <input type="text" name="last_name" placeholder="Last Name" onChange={onChangeHandler} values={values.last_name} onBlur={(e) => validationHandler(e)}></input>
                             {errors.last_name && <p>The name should be at least 2 characters long.</p>}
                         </div>
                         <div className="user-details">
-                            <input type={shownPassword} onChange={handlePasswordChange} value={passwordInput} name="password" placeholder="Password"></input>
-                            
+                            <input type={shownPassword} onChange={handlePasswordChange} value={passwordInput} name="password" placeholder="Password" values={[values.password_characters, values.password_upper, values.password_special, values.password_digits]} onInput={(e) => validationHandler(e)}></input>
+
                             <div className='showspass-1'>
                                 {shownPassword === 'password' ? <i className="fa-solid fa-eye" onClick={togglePassword}></i> : <i className="fa-regular fa-eye-slash" onClick={togglePassword}></i>}
                             </div>
                             <div className='password-checks'>
                                 <ul className='password-checkers-1'>
-                                    <li>The password must be at least 8 characters long <i class="fa-light fa-x"></i></li>
-                                    <li>There must be at least one upper later <i class="fa-light fa-x"></i></li>
+                                    <li>The password must be at least 8 characters long {errors.password_characters ? <i className="fa-light fa-x" style={{ color: 'red' }}></i> : <i className="fa-solid fa-check" style={{ color: 'green' }}></i>}</li>
+                                    <li>There must be at least one upper later {errors.password_upper ? <i className="fa-light fa-x" style={{ color: 'red' }}></i> : <i className="fa-solid fa-check" style={{ color: 'green' }}></i>}</li>
                                 </ul>
                                 <ul className='password-checkers-2'>
-                                    <li>There must at least one special sign <i class="fa-light fa-x"></i></li>
-                                    <li>There must be at least one digit <i class="fa-light fa-x"></i></li>
+                                    <li>There must at least one special sign {errors.password_special ? <i className="fa-light fa-x" style={{ color: 'red' }}></i> : <i className="fa-solid fa-check" style={{ color: 'green' }}></i>}</li>
+                                    <li>There must be at least one digit {errors.password_digits ? <i className="fa-light fa-x" style={{ color: 'red' }}></i> : <i className="fa-solid fa-check" style={{ color: 'green' }}></i>}</li>
                                 </ul>
                             </div>
                         </div>
