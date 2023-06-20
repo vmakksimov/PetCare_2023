@@ -1,9 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 from PetCare_2023.common.validators import file_max_size_in_mb
 
 
 # Create your models here.
+UserModel = get_user_model()
 
 class Users(models.Model):
 
@@ -59,6 +61,10 @@ class Pet(models.Model):
         null=True,
     )
 
+    owner_id = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return self.name

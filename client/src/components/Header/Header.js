@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthContext'
 
 export const Header = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     return (
         <div className="header-nav">
@@ -15,20 +15,24 @@ export const Header = () => {
             </div>
             <ul className="header-elements">
                 <li className='header-buttons'><Link to='/'>Home</Link></li>
-                {user.accessToken 
-                && <><li className='header-buttons'>Add Pet</li>
-                    <li className='header-buttons'>Services</li>
-                    <li className='header-buttons'><Link to='/logout'>Logout</Link></li>
-                    <span className='greeting-span'>Welcome, {user.username}</span>
+                {user.accessToken
+                    && <><li className='header-buttons'>Add Pet</li>
+                        <li className='header-buttons'><Link to='/mypets'>My Pets</Link></li>
+                        <li className='header-buttons'>Services</li>
+                        <li className='header-buttons'><Link to='/logout'>Logout</Link></li>
+
+
+                        <span className='greeting-span'>Welcome, {user.username}</span>
+                       
                     </>
                 }
                 {!user.accessToken && <>
-                 <li className='header-buttons'><Link to='/login'>Login</Link></li>
-                 <li className='header-buttons'><Link to='/register'>Register</Link></li>
-                 </>
+                    <li className='header-buttons'><Link to='/login'>Login</Link></li>
+                    <li className='header-buttons'><Link to='/register'>Register</Link></li>
+                </>
                 }
-                
-                
+
+
             </ul>
 
         </div>
