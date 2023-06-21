@@ -1,7 +1,7 @@
-export const PetDetail = ({pet}) => {
+export const PetDetail = ({ pet }) => {
     return (
         <>
-        <div className="personal-pet-image">
+            <div className="personal-pet-image">
                 <img src={pet.image} alt="" />
             </div>
             <div className="personal-pet-details">
@@ -10,6 +10,6 @@ export const PetDetail = ({pet}) => {
                 <p>Kind: {pet.kind} </p>
                 <p>Gender: {pet.gender}</p>
             </div>
-            </>
+        </>
     )
 }

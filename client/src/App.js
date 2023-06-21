@@ -14,6 +14,7 @@ import { AuthContext } from './components/context/AuthContext';
 import { Logout } from './components/Logout/Logout';
 import { PetsContext } from './components/context/PetsContext';
 import { MyPets } from './components/MyPets/PetsList';
+import { CreatePet } from './components/CreatePet/CreatePet';
 
 
 function App() {
@@ -36,22 +37,23 @@ function App() {
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{user, userLogin, userLogout}}>
-		<div className="App">
-			<Header />
-			<PetsContext.Provider value={{pets}}>
-			<div className='main-app'>
-				<Routes>
-					<Route path='/' element={<Home pets={pets} />} />
-					<Route path='/register' element={<Register />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/logout' element={<Logout />} />
-					<Route path='/mypets' element={<MyPets />} />
-				</Routes>
+		<AuthContext.Provider value={{ user, userLogin, userLogout }}>
+			<div className="App">
+				<Header />
+				<PetsContext.Provider value={{ pets }}>
+					<div className='main-app'>
+						<Routes>
+							<Route path='/' element={<Home pets={pets} />} />
+							<Route path='/register' element={<Register />} />
+							<Route path='/login' element={<Login />} />
+							<Route path='/logout' element={<Logout />} />
+							<Route path='/mypets' element={<MyPets />} />
+							<Route path='/create-pet' element={<CreatePet/>}/>
+						</Routes>
+					</div>
+				</PetsContext.Provider>
+				<Footer />
 			</div>
-			</PetsContext.Provider>
-			<Footer />
-		</div>
 		</AuthContext.Provider>
 	);
 }
