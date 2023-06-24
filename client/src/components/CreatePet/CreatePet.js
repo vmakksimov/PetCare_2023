@@ -1,44 +1,63 @@
+import { useNavigate } from 'react-router-dom';
+import * as PetService from '../../services/petsService'
+
 export const CreatePet = () => {
+
+    const navigate = useNavigate();
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const petsData = Object.fromEntries(new FormData(e.target))
+        console.log(petsData)
+
+
+        PetService.createPet(petsData)
+            .then(res => console.log(res))
+
+
+    }
     return (
         <div className="container-register">
             <div className="title sign">Add Pet</div>
             <div className="content">
-                <form >
+                <form onSubmit={onSubmit}>
                     <div className="game-details">
                         <div className="input-box">
                             <span className="details">Name</span>
-                            <input type="text" name="name" placeholder="Enter Name"  required />
-                            
+                            <input type="text" name="name" placeholder="Enter Name" required />
+
                         </div>
                         <div className="input-box">
                             <span className="details">Age</span>
-                            <input type="text" name="age" placeholder="Enter Age"  required />
-                            
+                            <input type="text" name="age" placeholder="Enter Age" required />
+
                         </div>
                         <div className="input-box">
                             <span className="details">Gender</span>
-                            <input type="text" name="gender" placeholder="Enter Gender"   required />
-                           
+                            <input type="text" name="gender" placeholder="Enter Gender" required />
+
                         </div>
                         <div className="input-box">
                             <span className="details">Summary</span>
-                            <input type="text" name="summary" placeholder="Type summary"  required />
-        
+                            <input type="text" name="summary" placeholder="Type summary" required />
+
                         </div>
                         <div className="input-box">
                             <span className="details">Kind</span>
-                            <select name="genre">
-                                <option value="business">Dog</option>
-                                <option value="horror">Cat</option>
-                                <option value="fictional">Parrot</option>
-                                <option value="romantic">Mice</option>
-                                <option value="adventure">Fish</option>
+                            <select name="kind">
+                                <option value="Dog">Dog</option>
+                                <option value="Cat">Cat</option>
+                                <option value="Parrot">Parrot</option>
+                                <option value="Mice">Mice</option>
+                                <option value="Fish">Fish</option>
                             </select>
                         </div>
                         <div className="input-box">
                             <span className="details">Image</span>
-                            <input type="text" name="image" placeholder="Enter Image Url"  required />
-                            
+                            <input type="file" name="image" /><br /><br />
+                            <button type="submit" name="upload">Upload</button>
+
                         </div>
                         <div className="input-box">
                             <span className="details"></span>

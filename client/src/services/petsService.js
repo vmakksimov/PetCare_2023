@@ -16,3 +16,5 @@ export const getPets = () => request.get(baseUrl)
 // POST
 
 export const createUser = (userData) => request.post(createUserUrl, userData)
+
+export const createPet = (petsData) => request.post(baseUrl, petsData)
