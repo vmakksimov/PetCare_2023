@@ -42,8 +42,8 @@ class Pet(models.Model):
     )
 
     image = models.ImageField(
-        null=True,
         blank=True,
+        null=True,
         upload_to='mediafiles/',
         validators= (file_max_size_in_mb, )
     )
@@ -61,7 +61,7 @@ class Pet(models.Model):
         null=True,
     )
 
-    owner_id = models.ForeignKey(
+    owner = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
     )

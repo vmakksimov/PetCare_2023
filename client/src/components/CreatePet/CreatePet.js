@@ -1,15 +1,25 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as PetService from '../../services/petsService'
+import { AuthContext } from '../context/AuthContext';
 
 export const CreatePet = () => {
 
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         const petsData = Object.fromEntries(new FormData(e.target))
-        console.log(petsData)
+        const formData = new FormData(e.target);
+        const name = formData.get('name')
+        const age = formData.get('author')
+        const gender = formData.get('year')
+        const kind = formData.get('summary')
+        const cover = formData.get('image')
+        // form_data.append("image_url", e.target.image_url, e.target.image_url.name);
+        console.log(cover)
 
 
         PetService.createPet(petsData)
@@ -55,25 +65,11 @@ export const CreatePet = () => {
                         </div>
                         <div className="input-box">
                             <span className="details">Image</span>
-                            <input type="file" name="image" /><br /><br />
-                            <button type="submit" name="upload">Upload</button>
-
+                            <input type="file" name="image" accept="image/jpeg,image/png,image/gif" /><br /><br />
                         </div>
                         <div className="input-box">
                             <span className="details"></span>
-                            <input type="hidden" name="liked" defaultValue={false} />
-                        </div>
-                        <div className="input-box">
-                            <span className="details"></span>
-                            <input type="hidden" name="total_likes" value={0} />
-                        </div>
-                        <div className="input-box">
-                            <span className="details"></span>
-                            <input type="hidden" name="liked_by" defaultValue={['default', 'default']} />
-                        </div>
-                        <div className="input-box">
-                            <span className="details"></span>
-                            <input type="hidden" name="reviews" defaultValue={[]} />
+                            <input type="hidden" name="owner" defaultValue={user._id} />
                         </div>
                     </div>
 

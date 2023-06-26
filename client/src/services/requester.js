@@ -21,14 +21,17 @@ export const request = async (method, url, data) => {
                 method,
                 headers: {
                     ...headers,
-                    'content-type': 'application/json',
-                   
+                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': 'csrftoken',
+                    'Accept': 'application/json',
                 },
                 body: JSON.stringify(data)
             });
         }
 
         const response = await buildRequest;
+        console.log(response)
       
         const result = await response.json()
 
