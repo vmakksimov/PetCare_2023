@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as PetService from '../../services/petsService'
 import { AuthContext } from '../context/AuthContext';
+import './CreatePet.css'
 
 export const CreatePet = () => {
 
