@@ -42,8 +42,9 @@ class Pet(models.Model):
     )
 
     image = models.ImageField(
-        blank=True,
         null=True,
+        blank=True,
+        default='',
         upload_to='mediafiles/',
         validators= (file_max_size_in_mb, )
     )
@@ -61,13 +62,21 @@ class Pet(models.Model):
         null=True,
     )
 
-    owner = models.ForeignKey(
+    user = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
     )
 
     def __str__(self):
         return self.name
+
+    def image_img(self):
+        if self.image:
+            return u'<img src="%s" width="50" height="50" />' % self.image.url
+        else:
+            return '(Sin imagen)'
+
+
 
     class Meta:
         verbose_name = 'Pets'

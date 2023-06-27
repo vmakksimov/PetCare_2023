@@ -35,10 +35,10 @@ SERIALIZERS
 
 # Create your views here.
 class PetsSerializer(serializers.ModelSerializer):
-    image_url = serializers.ImageField(required=False)
+    image = serializers.ImageField(required=False)
     class Meta:
         model = Pet
-        fields = ('name', 'age', 'gender', 'kind', 'image_url', 'owner_id')
+        fields = '__all__'
 
 
 class UsersSerializer(serializers.ModelSerializer):
@@ -51,7 +51,7 @@ class ImageSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length=None, use_url=True, allow_null=True, required=False)
     class Meta:
         model = Pet
-        fields = ('name', 'image')
+        fields = ('name', 'age','kind', 'gender', 'image', 'user',)
 
 
 '''
@@ -60,14 +60,9 @@ API VIEWS
 
 '''
 
-
 class RegisterUserAPIView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
-
-
-
-
 
 class LoginAPIView(ObtainAuthToken):
 
@@ -110,25 +105,64 @@ class ReadOnly(BasePermission):
         return request.method in SAFE_METHODS
 
 
-class PetsListView(rest_views.ListCreateAPIView):
+
+
+
+class PetsListView(APIView):
     queryset = Pet.objects.all()
     serializer_class = PetsSerializer
     permission_classes = (AllowAny,)
-    parser_classes = (MultiPartParser, JSONParser)
+    parser_classes = [MultiPartParser, JSONParser]
 
-    # def get(self, request):
-    #     return HttpResponse(request.data)
-    #
-    # def post(self, request):
-    #     return HttpResponse(content_type='multipart/form-data')
+    def pre_save(self, obj):
+        obj.image = self.request.FILES.get('file')
+    def get(self, request, *args, **kwargs):
+        posts = Pet.objects.all()
+        serializer = PetsSerializer(posts, many=True)
+        return Response(serializer.data)
     def post(self, request, *args, **kwargs):
+        serializer_class = PetsSerializer
+        file = request.data['image']
         a = 5
-        image = request.data['image']
-        Pet.objects.create(image=image)
-        return HttpResponse(content_type='multipart/form-data', status=200)
+        name = self.request.data['name']
+        age = self.request.data['age']
+        kind = self.request.data['kind']
+        gender = self.request.data['gender']
+        user_id = int(self.request.data['user'])
+        # serializer.save(user=self.request.user)
+        # Pet.objects.create(image=file)
+        data = {'user': user_id, 'image': file, 'name': name, 'age': age, 'kind': kind, 'gender': gender, }
+        serializer = serializer_class(data=data, partial=True)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(creator=self.request.user)
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response({'status': 'ok'}, status=200)
+
+        else:
+            return Response({'error': serializer.errors}, status=400)
+
+    # def post(self, request):
+    #     serializer = ImageSerializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     else:
+    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+    # def get(self, request, *args, **kwargs):
+    #     posts = Pet.objects.all()
+    #     serializer = PetsSerializer(posts, many=True)
+    #     return Response(serializer.data)
+
+
+
+    #
+        # return HttpResponse(content_type='multipart/form-data', status=200)
+
+
 
 
 
@@ -160,6 +194,24 @@ class ImageViewSet(rest_views.ListCreateAPIView):
     serializer_class = ImageSerializer
 
     def post(self, request, *args, **kwargs):
-        file = request.data['file']
-        image = Pet.objects.create(image=file)
-        return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)
+        serializer_class = ImageSerializer
+        file = request.data['image']
+        a = 5
+        name = self.request.data['name']
+        age = self.request.data['age']
+        kind = self.request.data['kind']
+        gender = self.request.data['gender']
+        user_id = int(self.request.data['user'])
+        # serializer.save(user=self.request.user)
+        # Pet.objects.create(image=file)
+        data = {'user': user_id, 'image': file, 'name': name, 'age': age, 'kind': kind, 'gender': gender, }
+        serializer = serializer_class(data=data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response({'status': 'ok'}, status=200)
+
+        else:
+            return Response({'error': serializer.errors}, status=400)
+        # return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)

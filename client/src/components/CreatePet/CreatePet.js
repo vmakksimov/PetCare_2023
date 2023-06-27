@@ -1,26 +1,55 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as PetService from '../../services/petsService'
 import { AuthContext } from '../context/AuthContext';
-import './CreatePet.css'
+
 
 export const CreatePet = () => {
 
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const [photo, setProfilePhoto] = useState('')
+    const [values, setValues] = useState({
+        image: '',
+    })
 
     const onSubmit = (e) => {
         e.preventDefault();
 
+        console.log(photo)
+
         const petsData = Object.fromEntries(new FormData(e.target))
         const formData = new FormData(e.target);
-        const name = formData.get('name')
-        const age = formData.get('author')
-        const gender = formData.get('year')
-        const kind = formData.get('summary')
-        const cover = formData.get('image')
+        const finalData = new FormData();
+        const image1 = formData.get('image')
+        console.log(image1[0])
+   
+
+        // const name = formData.get('name')
+        // const kind = formData.get('kind')
+        // const gender = formData.get('gender')
+        // const age = formData.get('age')
+        // const summary = formData.get('summary')
+        // const image = formData.get('image')
+        // const cover = Number(formData.get('user'))
+        
+        // finalData.append('name', name)
+        // finalData.append('kind', kind)
+        // finalData.append('gender', gender)
+        // finalData.append('age', age)
+        // finalData.append('summary', summary)
+        // finalData.append('image', image)
+        // finalData.append('user', cover)
+
+
+
         // form_data.append("image_url", e.target.image_url, e.target.image_url.name);
-        console.log(cover)
+       
+       
+       
+        // console.log(finalData)
+        // console.log(finalData.get('user'))
+       
 
 
         PetService.createPet(petsData)
@@ -66,11 +95,11 @@ export const CreatePet = () => {
                         </div>
                         <div className="input-box">
                             <span className="details">Image</span>
-                            <input type="file" name="image" accept="image/jpeg,image/png,image/gif" /><br /><br />
+                            <input type="file" name="image"   accept="image/*"  />
                         </div>
                         <div className="input-box">
                             <span className="details"></span>
-                            <input type="hidden" name="owner" defaultValue={user._id} />
+                            <input type="hidden" name="user" />
                         </div>
                     </div>
 
