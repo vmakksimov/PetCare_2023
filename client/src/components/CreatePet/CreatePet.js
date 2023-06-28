@@ -2,54 +2,52 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as PetService from '../../services/petsService'
 import { AuthContext } from '../context/AuthContext';
-
+import './CreatePet.css'
 
 export const CreatePet = () => {
 
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-    const [photo, setProfilePhoto] = useState('')
-    const [values, setValues] = useState({
-        image: '',
+
+
+    const [photo, setImage] = useState({
+        image: null,
     })
+
+
+    const handleInputChange = (event) => {
+        setImage({
+            [event.target.name]: event.target.files[0]
+            // image: event.target.files[0]
+        });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(photo)
+       
 
         const petsData = Object.fromEntries(new FormData(e.target))
         const formData = new FormData(e.target);
-        const finalData = new FormData();
-        const image1 = formData.get('image')
-        console.log(image1[0])
-   
+        console.log(photo)
+        console.log(petsData)
+      
 
-        // const name = formData.get('name')
-        // const kind = formData.get('kind')
-        // const gender = formData.get('gender')
-        // const age = formData.get('age')
-        // const summary = formData.get('summary')
-        // const image = formData.get('image')
-        // const cover = Number(formData.get('user'))
-        
-        // finalData.append('name', name)
-        // finalData.append('kind', kind)
-        // finalData.append('gender', gender)
-        // finalData.append('age', age)
-        // finalData.append('summary', summary)
-        // finalData.append('image', image)
-        // finalData.append('user', cover)
-
-
-
-        // form_data.append("image_url", e.target.image_url, e.target.image_url.name);
-       
-       
-       
-        // console.log(finalData)
-        // console.log(finalData.get('user'))
-       
+        // const addComment = (gameId, comment) => {
+        //     setGames(state => {
+    
+        //         const game = state.find(x => x._id == gameId);
+        //         const comments = game.comments || [];
+    
+        //         comments.push(comment)
+    
+        //         return [
+        //             ...state.filter(x => x._id !== gameId),
+        //             { ...game, comments }
+    
+        //         ]
+        //     })
+        // }
 
 
         PetService.createPet(petsData)
@@ -95,11 +93,11 @@ export const CreatePet = () => {
                         </div>
                         <div className="input-box">
                             <span className="details">Image</span>
-                            <input type="file" name="image"   accept="image/*"  />
+                            <input type="file" name="image" accept="image/*" onChange={handleInputChange} />
                         </div>
                         <div className="input-box">
                             <span className="details"></span>
-                            <input type="hidden" name="user" />
+                            <input type="hidden" name="user" defaultValue={user._id} />
                         </div>
                     </div>
 
