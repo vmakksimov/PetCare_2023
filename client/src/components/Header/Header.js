@@ -15,6 +15,7 @@ export const Header = () => {
             </div>
             <ul className="header-elements">
                 <li className='header-buttons'><Link to='/'>Home</Link></li>
+              
                 {user.accessToken
                     && <>
                         <li className='header-buttons'><Link to='/mypets'>My Pets</Link></li>

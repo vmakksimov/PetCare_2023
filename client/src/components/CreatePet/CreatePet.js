@@ -92,7 +92,7 @@ export const CreatePet = () => {
                         </div>
                         <div className="input-box">
                             <span className="details"></span>
-                            <input type="hidden" name="owner_id" defaultValue={user._id} />
+                            <input type="hidden" name="owner" defaultValue={user._id} />
                         </div>
                     </div>
 

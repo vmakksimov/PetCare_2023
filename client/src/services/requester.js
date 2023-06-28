@@ -21,10 +21,7 @@ export const request = async (method, url, data) => {
                 method,
                 headers: {
                     ...headers,
-                    'Content-Type': 'multipart/form-data',
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': 'csrftoken',
-                    'Accept': 'application/json',
+                    'content-type': 'application/json',
                 },
                 body: JSON.stringify(data)
             });

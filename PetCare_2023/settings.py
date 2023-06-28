@@ -73,7 +73,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'PetCare_2023.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_HEADERS = default_headers + ('cache-control', 'Access-Control-Allow-Origin', '*', 'multipart/form-data', 'image/*',)
+CORS_ALLOW_HEADERS = default_headers + ('cache-control', 'Access-Control-Allow-Origin', '*',)
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]

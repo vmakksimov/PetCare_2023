@@ -8,7 +8,8 @@ export const MyPets = () => {
     const { pets } = useContext(PetsContext);
     const { user } = useContext(AuthContext)
     
-    const ownerPets = pets.filter(x => x.owner_id == user._id)
+    console.log(pets)
+    const ownerPets = pets.filter(x => x.owner == user._id)
  
 
     return (

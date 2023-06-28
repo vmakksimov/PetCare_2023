@@ -36,6 +36,7 @@ SERIALIZERS
 # Create your views here.
 class PetsSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
+
     class Meta:
         model = Pet
         fields = '__all__'
@@ -49,9 +50,10 @@ class UsersSerializer(serializers.ModelSerializer):
 
 class ImageSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length=None, use_url=True, allow_null=True, required=False)
+
     class Meta:
         model = Pet
-        fields = ('name', 'age','kind', 'gender', 'image', 'user',)
+        fields = ('name', 'age', 'kind', 'gender', 'image', 'user',)
 
 
 '''
@@ -60,9 +62,13 @@ API VIEWS
 
 '''
 
+
 class RegisterUserAPIView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
+
+    a = 5
     serializer_class = RegisterSerializer
+
 
 class LoginAPIView(ObtainAuthToken):
 
@@ -105,9 +111,6 @@ class ReadOnly(BasePermission):
         return request.method in SAFE_METHODS
 
 
-
-
-
 class PetsListView(APIView):
     queryset = Pet.objects.all()
     serializer_class = PetsSerializer
@@ -116,10 +119,12 @@ class PetsListView(APIView):
 
     def pre_save(self, obj):
         obj.image = self.request.FILES.get('file')
+
     def get(self, request, *args, **kwargs):
         posts = Pet.objects.all()
         serializer = PetsSerializer(posts, many=True)
         return Response(serializer.data)
+
     def post(self, request, *args, **kwargs):
         serializer_class = PetsSerializer(data=request.data)
         a = 5
@@ -139,21 +144,13 @@ class PetsListView(APIView):
     #     else:
     #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
     # def get(self, request, *args, **kwargs):
     #     posts = Pet.objects.all()
     #     serializer = PetsSerializer(posts, many=True)
     #     return Response(serializer.data)
 
-
-
     #
-        # return HttpResponse(content_type='multipart/form-data', status=200)
-
-
-
-
+    # return HttpResponse(content_type='multipart/form-data', status=200)
 
 
 class UserViewSet(viewsets.ViewSet):
@@ -181,4 +178,3 @@ class RegisterUserView(rest_views.ListCreateAPIView):
 class GetPetsView(rest_views.ListCreateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetsSerializer
-

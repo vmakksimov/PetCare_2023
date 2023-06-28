@@ -62,7 +62,7 @@ class Pet(models.Model):
         null=True,
     )
 
-    owner_id = models.ForeignKey(
+    owner = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
     )
