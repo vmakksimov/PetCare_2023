@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseUrl = 'http://127.0.0.1:8000/pets/'
+const baseUrl = 'http://127.0.0.1:8000/pets-details/'
 const usersUrl = 'http://127.0.0.1:8000/users-view'
 const createUserUrl = 'http://127.0.0.1:8000/register/'
 

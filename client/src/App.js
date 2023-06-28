@@ -29,6 +29,13 @@ function App() {
 		setAuth({})
 	}
 
+	const addPetHandler = (petData) => {
+		setPet(state => [
+			...state,
+			petData
+		])
+	}
+
 
 	useEffect(() => {
 		petsService.getPets()
@@ -40,7 +47,7 @@ function App() {
 		<AuthContext.Provider value={{ user, userLogin, userLogout }}>
 			<div className="App">
 				<Header />
-				<PetsContext.Provider value={{ pets }}>
+				<PetsContext.Provider value={{ pets, addPetHandler }}>
 					<div className='main-app'>
 						<Routes>
 							<Route path='/' element={<Home pets={pets} />} />

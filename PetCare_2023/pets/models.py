@@ -62,21 +62,13 @@ class Pet(models.Model):
         null=True,
     )
 
-    user = models.ForeignKey(
+    owner_id = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
     )
 
     def __str__(self):
         return self.name
-
-    def image_img(self):
-        if self.image:
-            return u'<img src="%s" width="50" height="50" />' % self.image.url
-        else:
-            return '(Sin imagen)'
-
-
 
     class Meta:
         verbose_name = 'Pets'

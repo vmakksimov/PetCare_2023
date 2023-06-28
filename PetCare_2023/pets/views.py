@@ -178,29 +178,7 @@ class RegisterUserView(rest_views.ListCreateAPIView):
     serializer_class = UsersSerializer
 
 
-class ImageViewSet(rest_views.ListCreateAPIView):
+class GetPetsView(rest_views.ListCreateAPIView):
     queryset = Pet.objects.all()
-    serializer_class = ImageSerializer
+    serializer_class = PetsSerializer
 
-    def post(self, request, *args, **kwargs):
-        serializer_class = ImageSerializer
-        file = request.data['image']
-        a = 5
-        name = self.request.data['name']
-        age = self.request.data['age']
-        kind = self.request.data['kind']
-        gender = self.request.data['gender']
-        user_id = int(self.request.data['user'])
-        # serializer.save(user=self.request.user)
-        # Pet.objects.create(image=file)
-        data = {'user': user_id, 'image': file, 'name': name, 'age': age, 'kind': kind, 'gender': gender, }
-        serializer = serializer_class(data=data, partial=True)
-
-        if serializer.is_valid():
-            serializer.save()
-
-            return Response({'status': 'ok'}, status=200)
-
-        else:
-            return Response({'error': serializer.errors}, status=400)
-        # return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)

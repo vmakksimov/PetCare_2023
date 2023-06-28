@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import * as PetService from '../../services/petsService'
 import { AuthContext } from '../context/AuthContext';
 import './CreatePet.css'
+import axios from 'axios'
+import { PetsContext } from '../context/PetsContext';
 
 export const CreatePet = () => {
 
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const {pets , addPetHandler} = useContext(PetsContext);
 
 
     const [photo, setImage] = useState({
@@ -25,33 +28,25 @@ export const CreatePet = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-       
-
         const petsData = Object.fromEntries(new FormData(e.target))
         const formData = new FormData(e.target);
         console.log(photo)
         console.log(petsData)
-      
 
-        // const addComment = (gameId, comment) => {
-        //     setGames(state => {
-    
-        //         const game = state.find(x => x._id == gameId);
-        //         const comments = game.comments || [];
-    
-        //         comments.push(comment)
-    
-        //         return [
-        //             ...state.filter(x => x._id !== gameId),
-        //             { ...game, comments }
-    
-        //         ]
-        //     })
-        // }
+        let url = 'http://127.0.0.1:8000/create-pet/';
+        axios.post(url, petsData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(res => {
+                console.log(res)
+                addPetHandler(res)
+                navigate('/mypets')
+            })
+            .catch(err => console.log(err))
 
-
-        PetService.createPet(petsData)
-            .then(res => console.log(res))
+       
 
 
     }
@@ -59,7 +54,7 @@ export const CreatePet = () => {
         <div className="container-register">
             <div className="title sign">Add Pet</div>
             <div className="content">
-                <form onSubmit={onSubmit}>
+                <form encType="multipart/form-data" onSubmit={onSubmit}>
                     <div className="game-details">
                         <div className="input-box">
                             <span className="details">Name</span>
@@ -97,7 +92,7 @@ export const CreatePet = () => {
                         </div>
                         <div className="input-box">
                             <span className="details"></span>
-                            <input type="hidden" name="user" defaultValue={user._id} />
+                            <input type="hidden" name="owner_id" defaultValue={user._id} />
                         </div>
                     </div>
 

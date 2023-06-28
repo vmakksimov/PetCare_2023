@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export const Home = ({ pets }) => {
 
-    const pet = pets.find(x => x.name == 'Aya' && 'true')
+    const pet = pets.find(x => x.name == 'Max' && 'true')
     console.log(pet)
 
     return (

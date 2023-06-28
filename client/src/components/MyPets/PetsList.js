@@ -7,6 +7,7 @@ export const MyPets = () => {
 
     const { pets } = useContext(PetsContext);
     const { user } = useContext(AuthContext)
+    
     const ownerPets = pets.filter(x => x.owner_id == user._id)
  
 

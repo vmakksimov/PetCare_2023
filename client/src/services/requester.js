@@ -17,7 +17,6 @@ export const request = async (method, url, data) => {
         if (method === 'GET') {
             buildRequest = fetch(url, {headers});
         } else {
-            console.log(data)
             buildRequest = fetch(url, {
                 method,
                 headers: {
@@ -27,8 +26,6 @@ export const request = async (method, url, data) => {
                     'X-CSRFToken': 'csrftoken',
                     'Accept': 'application/json',
                 },
-
-               
                 body: JSON.stringify(data)
             });
         }
