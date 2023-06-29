@@ -50,6 +50,7 @@
     background: #8b6149;
     color: white;
     cursor: pointer;
+    margin: 20px
     
 }
 
@@ -63,5 +64,6 @@
     width: 64%;
     border-radius: 14px;
     box-shadow: 0px 0px 15px 2px black;
+    background: antiquewhite;
 }
   
