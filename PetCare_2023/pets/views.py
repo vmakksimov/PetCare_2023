@@ -127,30 +127,13 @@ class PetsListView(APIView):
 
     def post(self, request, *args, **kwargs):
         serializer_class = PetsSerializer(data=request.data)
-        a = 5
         if serializer_class.is_valid():
             serializer_class.save()
-
             return Response({'status': 'ok'}, status=200)
-
         else:
             return Response({'error': serializer_class.errors}, status=400)
 
-    # def post(self, request):
-    #     serializer = ImageSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     else:
-    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # def get(self, request, *args, **kwargs):
-    #     posts = Pet.objects.all()
-    #     serializer = PetsSerializer(posts, many=True)
-    #     return Response(serializer.data)
-
-    #
-    # return HttpResponse(content_type='multipart/form-data', status=200)
 
 
 class UserViewSet(viewsets.ViewSet):

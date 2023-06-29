@@ -43,4 +43,17 @@
     position: relative;
    
 }
+
+.button-book input {
+    border-radius: 6px;
+    padding: 8px 37px;
+    background: #8b6149;
+    color: white;
+    cursor: pointer;
+    
+}
+
+.button-book input:hover{
+    box-shadow: 0px 5px 4px 0px black;
+}
   

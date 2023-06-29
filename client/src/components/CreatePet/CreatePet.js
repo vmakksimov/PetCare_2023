@@ -57,22 +57,22 @@ export const CreatePet = () => {
                 <form encType="multipart/form-data" onSubmit={onSubmit}>
                     <div className="game-details">
                         <div className="input-box">
-                            <span className="details">Name</span>
+                            
                             <input type="text" name="name" placeholder="Enter Name" required />
 
                         </div>
                         <div className="input-box">
-                            <span className="details">Age</span>
+                            
                             <input type="text" name="age" placeholder="Enter Age" required />
 
                         </div>
                         <div className="input-box">
-                            <span className="details">Gender</span>
+                           
                             <input type="text" name="gender" placeholder="Enter Gender" required />
 
                         </div>
                         <div className="input-box">
-                            <span className="details">Summary</span>
+                            
                             <input type="text" name="summary" placeholder="Type summary" required />
 
                         </div>
@@ -86,7 +86,7 @@ export const CreatePet = () => {
                                 <option value="Fish">Fish</option>
                             </select>
                         </div>
-                        <div className="input-box">
+                        <div className="image-box">
                             <span className="details">Image</span>
                             <input type="file" name="image" accept="image/*" onChange={handleInputChange} />
                         </div>

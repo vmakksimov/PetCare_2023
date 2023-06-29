@@ -1,13 +1,25 @@
 .container-register {
-  border: 1px solid black;
-  margin: 150px auto;
-  width: 64%;
+    border: 1px solid black;
+    margin: 150px auto;
+    width: 64%;
 }
 
 .input-box {
-  margin: 10px;
+    margin: 10px;
 }
 
 .input-box input {
-  width: 100%;
+    width: 54%;
+    border-radius: 15px;
+    padding: 6px 12px;
+}
+
+.image-box {
+    position: relative;
+    left: 10.4%;
+}
+
+.game-details div:nth-child(5) select {
+    border-radius: 12px;
+    padding: 4px 4px;
 }
