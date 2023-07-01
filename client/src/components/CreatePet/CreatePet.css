@@ -1,7 +1,7 @@
 .container-register {
     border: 1px solid black;
     margin: 150px auto;
-    width: 64%;
+    width: 50%;
 }
 
 .input-box {
@@ -27,3 +27,4 @@
 .content {
     margin: 40px;
 }
+

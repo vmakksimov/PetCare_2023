@@ -52,7 +52,7 @@ export const CreatePet = () => {
     }
     return (
         <div className="container-register">
-            <div className="title sign">Add Pet</div>
+            <div className="title sign">Enter your pet details below</div>
             <div className="content">
                 <form encType="multipart/form-data" onSubmit={onSubmit}>
                     <div className="game-details">
@@ -97,7 +97,7 @@ export const CreatePet = () => {
                     </div>
 
                     <div className="button-book">
-                        <input type="submit" value="Add Pet" />
+                        <input type="submit" value="SUBMIT" />
                     </div>
                 </form>
             </div>
