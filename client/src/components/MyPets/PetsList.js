@@ -6,6 +6,7 @@ import { PetDetail } from "./PetDetail/PetDetail";
 import paws from '../../styles/images/paws.png'
 import paw from '../../styles/images/paw.png'
 import mypets from '../../styles/images/mypets.png'
+import { Link } from "react-router-dom";
 
 export const MyPets = () => {
 
@@ -22,6 +23,7 @@ export const MyPets = () => {
                 <section className='title-content'>
                     <section className='title-buttons'>
                         <h1>My Pets</h1>
+                        <p>Back to <strong><Link to='/'>Home</Link></strong></p>
                     </section>
                     <img src={paws} alt="" />
                 </section>
