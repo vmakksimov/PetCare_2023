@@ -2,8 +2,15 @@ import paws from '../../../styles/images/paws.png'
 import grooming from '../../../styles/images/grooming.png'
 import groomingService from '../../../styles/images/service-4.jpg'
 import './Grooming.css'
+import { Calendar } from '@natscale/react-calendar';
+import { useState } from 'react';
 
 export const Grooming = () => {
+    const [value, setValue] = useState();
+
+    const onClick = (e) => {
+        setValue(value);
+    }
     return (
         <section className="grooming-section">
             <div className="home-content">
@@ -37,7 +44,9 @@ export const Grooming = () => {
                         </section>
                         <section className='grooming-date'>
                             <label htmlFor="datepiker">Date</label>
-                            <input id='datepiker' placeholder='DD/MM/YYYY'></input>
+                            <input id='datepiker' type='date' placeholder='DD/MM/YYYY'></input>
+                           
+                            
                         </section>
 
                     </div>
