@@ -1,0 +1,8 @@
+.grooming-content {
+    display: flex;
+}
+
+#grooming-details {
+    display: flex;
+    flex-direction: column;
+}
