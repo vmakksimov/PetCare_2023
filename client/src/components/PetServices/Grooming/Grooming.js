@@ -45,10 +45,17 @@ export const Grooming = () => {
                         <section className='grooming-date'>
                             <label htmlFor="datepiker">Date</label>
                             <input id='datepiker' type='date' placeholder='DD/MM/YYYY'></input>
-                           
-                            
                         </section>
 
+                    </div>
+                    <div className='grooming-quantity'>
+                        <input className='button-quantity' placeholder='1'></input>
+                        <button className='button-cart'>Add to Cart</button>
+                    </div>
+                    
+                    <div className="button-buy">
+                        
+                        <input type="submit" value="Buy Now" />
                     </div>
                 </article>
             </div>
