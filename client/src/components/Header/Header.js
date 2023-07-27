@@ -25,9 +25,9 @@ export const Header = () => {
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Day Care</a></li>
+                                <li><a class="dropdown-item"><Link to='/services/grooming'>Grooming</Link></a></li>
+                                <li><a class="dropdown-item" href="#">Veterinary</a></li>
                             </ul>
                         </li>
                         <li className='header-buttons'><Link to='/logout'>Logout</Link></li>

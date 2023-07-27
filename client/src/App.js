@@ -15,6 +15,7 @@ import { Logout } from './components/Logout/Logout';
 import { PetsContext } from './components/context/PetsContext';
 import { MyPets } from './components/MyPets/PetsList';
 import { CreatePet } from './components/CreatePet/CreatePet';
+import { Grooming } from './components/PetServices/Grooming/Grooming';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
 							<Route path='/logout' element={<Logout />} />
 							<Route path='/mypets' element={<MyPets />} />
 							<Route path='/create-pet' element={<CreatePet/>}/>
+							<Route path='/services/grooming' element={<Grooming/>}/>
 						</Routes>
 					</div>
 				</PetsContext.Provider>

@@ -76,3 +76,7 @@
     background-color: transparent;
 }
 
+.dropdown-menu.show li:hover{
+    box-shadow: 0px 0px 12px 2px white;
+}
+

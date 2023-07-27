@@ -65,10 +65,7 @@ API VIEWS
 
 class RegisterUserAPIView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
-
-    a = 5
     serializer_class = RegisterSerializer
-
 
 class LoginAPIView(ObtainAuthToken):
 

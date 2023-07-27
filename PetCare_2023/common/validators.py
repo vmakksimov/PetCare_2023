@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 
+
 def file_max_size_in_mb(max_size):
     def validate(value):
         filesize = value.file.size
