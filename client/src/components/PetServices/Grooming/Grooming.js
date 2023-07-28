@@ -1,7 +1,7 @@
+import './Grooming.css'
 import paws from '../../../styles/images/paws.png'
 import grooming from '../../../styles/images/grooming.png'
 import groomingService from '../../../styles/images/service-4.jpg'
-import './Grooming.css'
 import { Calendar } from '@natscale/react-calendar';
 import { useState } from 'react';
 
@@ -49,12 +49,14 @@ export const Grooming = () => {
 
                     </div>
                     <div className='grooming-quantity'>
+                        <i id='left-plus' className="fa-solid fa-circle-plus"></i>
                         <input className='button-quantity' placeholder='1'></input>
+                        <i id='right-plus' className="fa-solid fa-circle-minus"></i>
                         <button className='button-cart'>Add to Cart</button>
                     </div>
-                    
+
                     <div className="button-buy">
-                        
+
                         <input type="submit" value="Buy Now" />
                     </div>
                 </article>

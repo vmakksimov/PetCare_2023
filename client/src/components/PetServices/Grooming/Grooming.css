@@ -1,8 +1,6 @@
 .booking-image img {
     width: 100%;
-    position: relative;
-    left: 17%;
-    top: 17%;
+   
 }
 
 .booking-image {
@@ -14,14 +12,16 @@
 
 .grooming-content {
     display: flex;
+    justify-content: center;
 }
 
 .grooming-price {
-    margin-bottom: 260px;
+    margin-bottom: 160px;
 }
 
 .grooming-details, .grooming-date{
     display: flex;
+    margin-bottom: 22px;
 }
 
 #grooming-table-label{
@@ -38,4 +38,35 @@
 
 #grooming-table {
     padding: 10px 60px;
+}
+
+.button-cart {
+    color: white;
+    background: dimgrey;
+    padding: 5px 52px;
+    margin-left: 13px;
+}
+
+.button-quantity {
+    border-radius: 35px;
+    width: 35%;
+    padding: 10px 25px;
+}
+
+#left-plus {
+    position: relative;
+    font-size: 35px;
+    color: coral;
+    left: 9%;
+    top: 7px;
+    cursor: pointer;
+}
+
+#right-plus {
+    position: relative;
+    font-size: 35px;
+    color: coral;
+    right: 9%;
+    top: 7px;
+    cursor: pointer;
 }
