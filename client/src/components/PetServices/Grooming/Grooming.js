@@ -34,8 +34,8 @@ export const Grooming = () => {
                         <h1>50.00 - 100.00</h1>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
 
-                        <section id='grooming-details'>
-                            <label htmlFor="grooming-table">Duration</label>
+                        <section className='grooming-details'>
+                            <label id='grooming-table-label' htmlFor="grooming-table">Duration</label>
                             <select id='grooming-table'>
                                 <option value="Choose an option">Choose an option</option>
                                 <option value="Full Day">Full day (over 5 hours)</option>
@@ -43,7 +43,7 @@ export const Grooming = () => {
                             </select>
                         </section>
                         <section className='grooming-date'>
-                            <label htmlFor="datepiker">Date</label>
+                            <label id='datepiker-label' htmlFor="datepiker">Date</label>
                             <input id='datepiker' type='date' placeholder='DD/MM/YYYY'></input>
                         </section>
 

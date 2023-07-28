@@ -1,4 +1,41 @@
+.booking-image img {
+    width: 100%;
+    position: relative;
+    left: 17%;
+    top: 17%;
+}
+
+.booking-image {
+    width: 49%;
+    /* margin: 150px auto; */
+    display: flex;
+    flex-direction: column;
+}
+
 .grooming-content {
     display: flex;
 }
 
+.grooming-price {
+    margin-bottom: 260px;
+}
+
+.grooming-details, .grooming-date{
+    display: flex;
+}
+
+#grooming-table-label{
+    margin-right: 20px;
+}
+
+#datepiker-label {
+    margin-right: 53px;
+}
+
+#datepiker {
+    padding: 10px 90px;
+}
+
+#grooming-table {
+    padding: 10px 60px;
+}
