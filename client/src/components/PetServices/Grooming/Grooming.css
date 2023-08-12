@@ -13,6 +13,7 @@
 .grooming-content {
     display: flex;
     justify-content: center;
+    margin: 150px auto;
 }
 
 .grooming-price {
@@ -69,4 +70,13 @@
     right: 9%;
     top: 7px;
     cursor: pointer;
+}
+
+.button-buy input {
+    width: 78%;
+    margin-left: 7%;
+    margin-top: 7%;
+    padding: 8px;
+    border: 0px;
+    background: #ff7f50;
 }
