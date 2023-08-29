@@ -57,12 +57,12 @@ export const Grooming = () => {
                         <i id='right-plus' className="fa-solid fa-circle-plus" onClick={onClick}></i>
                         <input className='button-quantity' placeholder='1'></input>
                         <i id='left-plus' className="fa-solid fa-circle-minus" onClick={onClick}></i>
-                        <button className='button-cart'>Add to Cart</button>
+                        <button className='button-cart'>ADD TO CART</button>
                     </div>
 
                     <div className="button-buy">
 
-                        <input type="submit" value="Buy Now" />
+                        <input type="submit" value="BUY NOW" />
                     </div>
                 </article>
             </div>
