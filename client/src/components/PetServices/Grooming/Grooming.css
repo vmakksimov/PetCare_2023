@@ -78,5 +78,12 @@
     margin-top: 7%;
     padding: 8px;
     border: 0px;
+    border: 3px solid coral;
+    border-radius: 25px;
     background: #ff7f50;
+}
+
+.button-buy input:hover{
+    border: 3px solid coral;
+    background: transparent;
 }
