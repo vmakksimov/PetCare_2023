@@ -9,7 +9,12 @@ export const Grooming = () => {
     const [value, setValue] = useState();
 
     const onClick = (e) => {
-        setValue(value);
+        let currentValue = e.target.parentElement.children[1].placeholder
+        if (e.target.id == 'right-plus'){
+            e.target.parentElement.children[1].placeholder = Number(currentValue) + 1
+        }else if (e.target.id == 'left-plus' && currentValue > 0 ){
+            e.target.parentElement.children[1].placeholder = Number(currentValue) - 1
+        }
     }
     return (
         <section className="grooming-section">
@@ -49,9 +54,9 @@ export const Grooming = () => {
 
                     </div>
                     <div className='grooming-quantity'>
-                        <i id='left-plus' className="fa-solid fa-circle-plus"></i>
+                        <i id='right-plus' className="fa-solid fa-circle-plus" onClick={onClick}></i>
                         <input className='button-quantity' placeholder='1'></input>
-                        <i id='right-plus' className="fa-solid fa-circle-minus"></i>
+                        <i id='left-plus' className="fa-solid fa-circle-minus" onClick={onClick}></i>
                         <button className='button-cart'>Add to Cart</button>
                     </div>
 

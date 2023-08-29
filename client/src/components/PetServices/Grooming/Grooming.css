@@ -58,7 +58,7 @@
     position: relative;
     font-size: 35px;
     color: coral;
-    left: 9%;
+    right: 9%;
     top: 7px;
     cursor: pointer;
 }
@@ -67,7 +67,7 @@
     position: relative;
     font-size: 35px;
     color: coral;
-    right: 9%;
+    left: 9%;
     top: 7px;
     cursor: pointer;
 }
@@ -86,4 +86,11 @@
 .button-buy input:hover{
     border: 3px solid coral;
     background: transparent;
+}
+
+::placeholder{
+    position: relative;
+    left: 40%;
+    color: black;
+    
 }
