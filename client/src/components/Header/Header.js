@@ -8,6 +8,10 @@ export const Header = () => {
 
     const { user, itemCount, setItemCount } = useContext(AuthContext);
 
+    const badgeClick = () => {
+        console.log('badge click')
+    }
+
     return (
         <div className="header-nav">
             <div className='logo'>
@@ -35,8 +39,8 @@ export const Header = () => {
 
 
                         <span className='greeting-span'>Welcome, {user.username}</span>
-                        <Badge color="secondary" badgeContent={itemCount}>
-                            <ShoppingCartIcon />{" "}
+                        <Badge color="secondary" className='badge' badgeContent={itemCount}>
+                            <ShoppingCartIcon onClick={badgeClick}/>{" "}
                         </Badge>
                     </>
                 }
