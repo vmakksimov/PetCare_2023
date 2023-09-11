@@ -2,10 +2,11 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
-
+import Badge from "@material-ui/core/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 export const Header = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, itemCount, setItemCount } = useContext(AuthContext);
 
     return (
         <div className="header-nav">
@@ -34,7 +35,9 @@ export const Header = () => {
 
 
                         <span className='greeting-span'>Welcome, {user.username}</span>
-
+                        <Badge color="secondary" badgeContent={itemCount}>
+                            <ShoppingCartIcon />{" "}
+                        </Badge>
                     </>
                 }
                 {!user.accessToken && <>

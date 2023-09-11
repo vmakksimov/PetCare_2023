@@ -17,10 +17,16 @@ import { MyPets } from './components/MyPets/PetsList';
 import { CreatePet } from './components/CreatePet/CreatePet';
 import { Grooming } from './components/PetServices/Grooming/Grooming';
 
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
+
 
 function App() {
 	const [user, setAuth] = useLocalStorage('auth', {})
 	const [pets, setPet] = useState([])
+	const [itemCount, setItemCount] = useState(1);
 
 	const userLogin = (authData) => {
 		setAuth(authData)
@@ -45,7 +51,7 @@ function App() {
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{ user, userLogin, userLogout }}>
+		<AuthContext.Provider value={{ user, itemCount, userLogin, userLogout, setItemCount }}>
 			<div className="App">
 				<Header />
 				<PetsContext.Provider value={{ pets, addPetHandler }}>
@@ -56,8 +62,8 @@ function App() {
 							<Route path='/login' element={<Login />} />
 							<Route path='/logout' element={<Logout />} />
 							<Route path='/mypets' element={<MyPets />} />
-							<Route path='/create-pet' element={<CreatePet/>}/>
-							<Route path='/services/grooming' element={<Grooming/>}/>
+							<Route path='/create-pet' element={<CreatePet />} />
+							<Route path='/services/grooming' element={<Grooming />} />
 						</Routes>
 					</div>
 				</PetsContext.Provider>
